@@ -13,6 +13,20 @@ All contributions are made via GitHub Pull Requests.
 
 ## Submitting a Pull Request
 
+### Recommended Process for New Agents
+
+To ensure consistency and quality, we have a "Meta-Agent" process that we strongly recommend you use to create new agents. This process guides you through the necessary steps, from defining the persona to generating a well-structured agent file.
+
+To start this process, simply ask the AI assistant:
+
+> "Let's create a new agent using the process in `META-AGENT-SOP.md`."
+
+The assistant will then follow the defined workflow to help you build and save your agent.
+
+### Manual Process
+
+If you prefer to create an agent manually, please follow these steps:
+
 1.  **Fork the Repository:** Create your own copy of the repository on GitHub.
 2.  **Clone Your Fork:** Clone your forked repository to your local machine.
 3.  **Create a Branch:** Create a new branch for your changes (e.g., `git checkout -b add-devops-agent`).
