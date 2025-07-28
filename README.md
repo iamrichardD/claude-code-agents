@@ -103,7 +103,8 @@ claude-agents commit -m "Add my custom agent"
 
 ## Available Agents
 
-*This section will be populated with the list of available agents.*
+- **agile-coach**: An Agile coaching expert, inspired by XP and 'Making Users Awesome', that facilitates workflows, removes impediments, and empowers developers by ensuring smooth project execution.
+- **project-manager**: A project management expert for planning, scoping, and organizing software development tasks. Use to create project plans, break down features into tickets, and estimate timelines.
 
 ## Contributing
 
