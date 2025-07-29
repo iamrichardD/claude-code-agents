@@ -10,7 +10,11 @@ This collection is for solo software engineers and software engineering teams wh
 
 ## Installation
 
-These agents are managed as **user-level agents** using a `git bare` repository, allowing you to "install" them directly into your home directory. This method keeps your configuration clean, makes it easy to receive updates, and allows you to track your own custom agents in the same repository.
+### A Note on a Safe, Conflict-Free Installation
+
+This project uses a `git bare` repository to manage your agents, a powerful technique detailed in [this Atlassian article on dotfiles](https://www.atlassian.com/git/tutorials/dotfiles). This method is popular for its precision and control.
+
+To ensure this system **never** conflicts with your own dotfiles setup or other files in your home directory, the installation commands use Git's `sparse-checkout` feature. This guarantees that the `claude-agents` command will **only ever** read from or write to the `~/.claude` directory, making it completely safe to use alongside other tools. For more general information on dotfiles, see [dotfiles.github.io](https://dotfiles.github.io/).
 
 ### 1. Clone the Repository
 
@@ -32,9 +36,11 @@ After adding the alias, restart your shell or source your configuration file (e.
 
 ### 3. Check Out the Agents
 
-Run the checkout command. This will place the `.claude/agents` directory from this repository into your home directory.
+These commands use `sparse-checkout` to ensure only the `.claude` directory is checked out, leaving other files in your home directory untouched.
 
 ```bash
+claude-agents sparse-checkout init --cone
+claude-agents sparse-checkout set .claude
 claude-agents checkout
 ```
 
@@ -42,31 +48,27 @@ claude-agents checkout
 
 ### **Important: Handling Existing Configurations**
 
-If you already have a `~/.claude` directory, the `checkout` command will fail to prevent overwriting your files. Follow these steps to safely merge the repository's agents with your own:
+If you already have custom agents in `~/.claude/agents`, the following steps will help you perform a safe merge.
 
-1.  **Temporarily Move Your Existing Directory:**
+1.  **Back Up Your Existing Agents (If Necessary):**
+    If the `~/.claude/agents` directory exists, back it up before running the checkout command.
     ```bash
-    mv ~/.claude ~/.claude.backup
+    [ -d ~/.claude/agents ] && mv ~/.claude/agents ~/.claude/agents.backup
     ```
 
-2.  **Run the Checkout Command Again:**
-    Now that the path is clear, the checkout will succeed.
-    ```bash
-
-    claude-agents checkout
-    ```
+2.  **Run the Checkout Command:**
+    The `claude-agents checkout` command from the previous step should now succeed. If it fails due to local changes, you may need to force it: `claude-agents checkout -f`.
 
 3.  **Merge Your Backup:**
-    Move your original agents into the new, version-controlled directory.
+    If you created a backup, move your original agents into the new, version-controlled directory.
     ```bash
-    mv ~/.claude.backup/agents/* ~/.claude/agents/
+    [ -d ~/.claude/agents.backup ] && mv ~/.claude/agents.backup/* ~/.claude/agents/
     ```
-    *Note: If you have other files in `~/.claude.backup`, you can move them over as well.*
 
 4.  **Clean Up:**
-    Once you've confirmed your agents are merged, you can remove the backup directory.
+    Once you've confirmed your agents are merged, you can remove the backup.
     ```bash
-    rm -rf ~/.claude.backup
+    [ -d ~/.claude/agents.backup ] && rm -rf ~/.claude/agents.backup
     ```
 ---
 
