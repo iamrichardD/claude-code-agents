@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contributing - Claude Code Agents">
+  <div class="content">
+    <h1>Contributing</h1>
+
+    <section id="intro">
+      <p>Thank you for considering contributing! This project thrives on community involvement. There are two main ways to contribute: proposing new agents or improving existing ones.</p>
+    </section>
+
+    <section id="recommended-path">
+      <h2>The Recommended Path: Meta-Agent Process</h2>
+      <p>To ensure consistency and quality, we strongly recommend using the "Meta-Agent" process for creating new agents. This process guides you through the necessary steps. To start, simply ask the AI assistant:</p>
+      <pre><code>Let's create a new agent using the process in `META-AGENT-SOP.md`.</code></pre>
+    </section>
+
+    <section id="manual-process">
+      <h2>The Manual Process</h2>
+      <p>If you prefer to contribute manually, please follow the standard GitHub workflow:</p>
+      <ol>
+        <li>Fork the repository.</li>
+        <li>Create a new branch for your changes (e.g., <code>git checkout -b add-new-agent</code>).</li>
+        <li>Make your changes in the <code>.claude/agents/</code> directory.</li>
+        <li><strong>Important:</strong> If adding a new agent, you must add it to the "Available Agents" list in the main <code>README.md</code> file.</li>
+        <li>Commit your changes with a clear message and open a Pull Request.</li>
+      </ol>
+    </section>
+
+    <section id="style-guide">
+      <h2>Agent Style Guide</h2>
+      <p>To maintain consistency, please adhere to the following standards:</p>
+      <ul>
+        <li><strong>File Naming:</strong> Use <code>lowercase-with-hyphens.md</code>.</li>
+        <li><strong>Frontmatter:</strong> Include a <code>name</code>, a clear one-sentence <code>description</code>, and a list of essential <code>tools</code>.</li>
+        <li><strong>System Prompt:</strong> Structure the prompt with the agent's persona, core responsibilities, and process.</li>
+      </ul>
+    </section>
+
+    <section id="legal">
+      <h2>Code of Conduct & Licensing</h2>
+      <p>Please be respectful and constructive in all interactions. By contributing, you agree that your contributions will be licensed under the project's MIT License.</p>
+    </section>
+
+  </div>
+</Layout>
+
+<style>
+  .content {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  h1, h2 {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+    color: var(--primary-color);
+  }
+  pre {
+    background-color: var(--border-color);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+  code {
+    font-family: monospace;
+  }
+  ul, ol {
+    padding-left: 1.5rem;
+  }
+</style>

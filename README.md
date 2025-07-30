@@ -103,10 +103,24 @@ claude-agents commit -m "Add my custom agent"
 # claude-agents push
 ```
 
+## Project Structure
+
+- **`.claude/agents/`**: Contains the markdown definitions for all available agent personas.
+- **`knowledge-base/`**: Holds the philosophical documents that guide the agents.
+- **`src-gh-pages/`**: The source code for the project's GitHub Pages website, built with Astro.
+- **`docs/`**: The compiled, static output of the website. This directory is what is served by GitHub Pages.
+
 ## Available Agents
 
 - **agile-coach**: An Agile coaching expert, inspired by XP and 'Making Users Awesome', that facilitates workflows, removes impediments, and empowers developers by ensuring smooth project execution.
+- **designer**: A web design expert focused on creating clean, modern, and intuitive interfaces using HTML First and Mobile First principles.
+- **e2e-tester**: An expert in Quality Assurance who writes and maintains end-to-end tests using Playwright, guided by a strong testing philosophy.
+- **frontend-developer**: An expert frontend developer who translates design into high-quality, performant, and accessible code, following XP and 'Making Users Awesome' principles.
 - **project-manager**: A project management expert for planning, scoping, and organizing software development tasks. Use to create project plans, break down features into tickets, and estimate timelines.
+
+## Deployment
+
+The GitHub Pages site is built into and deployed from the `docs/` directory on the `main` branch.
 
 ## Contributing
 

@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Installation - Claude Code Agents">
+  <div class="content">
+    <h1>Installation</h1>
+
+    <section id="safety">
+      <h2>A Note on a Safe, Conflict-Free Installation</h2>
+      <p>
+        This project uses a <code>git bare</code> repository to manage your agents, a powerful technique for managing dotfiles. To ensure this system <strong>never</strong> conflicts with your own files, the installation uses Git's <code>sparse-checkout</code> feature. This guarantees that the setup will only ever affect the <code>~/.claude</code> directory, making it completely safe.
+      </p>
+    </section>
+
+    <section id="step1">
+      <h2>1. Clone the Repository</h2>
+      <p>First, clone this repository to a hidden "bare" repository in your home directory.</p>
+      <pre><code>git clone --bare https://github.com/iamrichardd/claude-agents.git $HOME/.claude-agents.git</code></pre>
+    </section>
+
+    <section id="step2">
+      <h2>2. Set Up the Alias</h2>
+      <p>Add the following alias to your shell configuration file (e.g., <code>~/.zshrc</code>, <code>~/.bashrc</code>). This gives you a convenient <code>claude-agents</code> command.</p>
+      <pre><code>alias claude-agents="git --git-dir=$HOME/.claude-agents.git/ --work-tree=$HOME"</code></pre>
+      <p>After adding the alias, restart your shell or source your configuration file.</p>
+    </section>
+
+    <section id="step3">
+      <h2>3. Check Out the Agents</h2>
+      <p>These commands use <code>sparse-checkout</code> to ensure only the <code>.claude</code> directory is checked out, leaving other files in your home directory untouched.</p>
+      <pre><code>claude-agents sparse-checkout init --cone
+claude-agents sparse-checkout set .claude
+claude-agents checkout</code></pre>
+    </section>
+
+    <section id="existing-configs">
+      <h2>Important: Handling Existing Configurations</h2>
+      <p>If you already have custom agents in <code>~/.claude/agents</code>, these steps will help you perform a safe merge.</p>
+      <ol>
+        <li>
+          <strong>Back Up Your Existing Agents:</strong>
+          <pre><code>[ -d ~/.claude/agents ] && mv ~/.claude/agents ~/.claude/agents.backup</code></pre>
+        </li>
+        <li>
+          <strong>Run the Checkout Command:</strong>
+          <p>The checkout command from the previous step should now succeed. If it fails, you may need to force it: <code>claude-agents checkout -f</code>.</p>
+        </li>
+        <li>
+          <strong>Merge Your Backup:</strong>
+          <pre><code>[ -d ~/.claude/agents.backup ] && mv ~/.claude/agents.backup/* ~/.claude/agents/</code></pre>
+        </li>
+        <li>
+          <strong>Clean Up:</strong>
+          <pre><code>[ -d ~/.claude/agents.backup ] && rm -rf ~/.claude/agents.backup</code></pre>
+        </li>
+      </ol>
+    </section>
+
+    <section id="updating">
+        <h2>Updating the Agents</h2>
+        <p>To pull the latest agents and updates from the repository, run:</p>
+        <pre><code>claude-agents pull</code></pre>
+    </section>
+
+  </div>
+</Layout>
+
+<style>
+  .content {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  h1, h2 {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+    color: var(--primary-color);
+  }
+  pre {
+    background-color: var(--border-color);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+  code {
+    font-family: monospace;
+  }
+</style>

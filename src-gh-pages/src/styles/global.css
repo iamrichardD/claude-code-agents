@@ -1,0 +1,35 @@
+/* Light Mode (Default) */
+:root {
+  --primary-color: #4A5568; /* Slate Blue */
+  --text-primary: #1A202C;    /* Dark Gray */
+  --text-secondary: #718096; /* Medium Gray */
+  --background-color: #FFFFFF; /* White */
+  --border-color: #E2E8F0;     /* Light Gray */
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #A0AEC0;    /* Light Slate Blue */
+    --text-primary: #E2E8F0;      /* Light Gray */
+    --text-secondary: #A0AEC0;    /* Medium Gray */
+    --background-color: #1A202C;  /* Dark Gray */
+    --border-color: #4A5568;      /* Slate Blue */
+  }
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  margin: 0;
+  padding: 0;
+}
+
+.logotype .primary {
+  font-weight: bold;
+}
+
+.logotype .secondary {
+  color: var(--text-secondary);
+}

@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const agents = [
+  {
+    name: 'agile-coach',
+    description: "An Agile coaching expert, inspired by XP and 'Making Users Awesome', that facilitates workflows, removes impediments, and empowers developers by ensuring smooth project execution."
+  },
+  {
+    name: 'designer',
+    description: "A web design expert focused on creating clean, modern, and intuitive interfaces using HTML First and Mobile First principles."
+  },
+  {
+    name: 'e2e-tester',
+    description: "An expert in Quality Assurance who writes and maintains end-to-end tests using Playwright, guided by a strong testing philosophy."
+  },
+  {
+    name: 'frontend-developer',
+    description: "An expert frontend developer who translates design into high-quality, performant, and accessible code, following XP and 'Making Users Awesome' principles."
+  },
+  {
+    name: 'project-manager',
+    description: "A project management expert for planning, scoping, and organizing software development tasks. Use to create project plans, break down features into tickets, and estimate timelines."
+  }
+];
+---
+
+<Layout title="Claude Code Agents">
+  <section class="hero">
+    <h1>Welcome to Claude Code Agents</h1>
+    <p>A curated collection of expert agents to streamline your development workflow.</p>
+  </section>
+
+  <section class="agent-list">
+    <h2>Available Agents</h2>
+    <ul>
+      {agents.map(agent => (
+        <li>
+          <h3>{agent.name}</h3>
+          <p>{agent.description}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    background-color: var(--background-color);
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+  }
+
+  .agent-list {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .agent-list h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  li {
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+  }
+</style>

@@ -60,6 +60,10 @@ The system prompt is the heart of the agent. It should be structured and detaile
 -   **Give Examples (Optional but Recommended):** Show an example of the desired output format.
 -   **Be Clear and Direct:** Use simple, direct language. Avoid ambiguity.
 
+## A Note on Testing
+
+As our project now includes an automated end-to-end test suite, please consider if your changes could benefit from a new test case or require updates to an existing one. While not mandatory for all contributions, a commitment to testing is highly encouraged and aligns with our project's philosophy of quality.
+
 ## Code of Conduct
 
 This project and its contributors are expected to follow a code of conduct. Please be respectful and constructive in all your interactions.

@@ -1,0 +1,82 @@
+---
+import '../styles/global.css';
+
+const { title } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<header>
+			<div class="logotype">
+				<a href="/" class="logotype-link">
+					<span class="primary">Claude Code Agents</span>
+					<span class="secondary">| An AI-Powered Development Team</span>
+				</a>
+			</div>
+			<nav>
+				<a href="/">Home</a>
+				<a href="/installation">Installation</a>
+				<a href="/contributing">Contributing</a>
+			</nav>
+		</header>
+		<main>
+			<slot />
+		</main>
+		<footer>
+			<p>&copy; {new Date().getFullYear()} Claude Code Agents. All rights reserved.</p>
+		</footer>
+	</body>
+</html>
+<style>
+	body {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+
+	main {
+		flex-grow: 1;
+	}
+
+	header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1rem 2rem;
+		border-bottom: 1px solid var(--border-color);
+	}
+
+	.logotype-link {
+		text-decoration: none;
+		color: var(--text-primary);
+	}
+
+	nav a {
+		margin-left: 1.5rem;
+		color: var(--text-secondary);
+		text-decoration: none;
+		font-weight: 500;
+	}
+
+	nav a:hover {
+		color: var(--primary-color);
+		text-decoration: underline;
+	}
+
+	footer {
+		padding: 1rem 2rem;
+		border-top: 1px solid var(--border-color);
+		border-bottom: none;
+		text-align: center;
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+	}
+</style>
