@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Installation - Claude Code Agents">
+<Layout title="Installation - dotagents">
   <div class="content">
     <h1>Installation</h1>
 
@@ -16,22 +16,22 @@ import Layout from '../layouts/Layout.astro';
     <section id="step1">
       <h2>1. Clone the Repository</h2>
       <p>First, clone this repository to a hidden "bare" repository in your home directory.</p>
-      <pre><code>git clone --bare https://github.com/iamrichardd/claude-agents.git $HOME/.claude-agents.git</code></pre>
+      <pre><code>git clone --bare https://github.com/iamrichardd/dotagents.git $HOME/.dotagents.git</code></pre>
     </section>
 
     <section id="step2">
       <h2>2. Set Up the Alias</h2>
       <p>Add the following alias to your shell configuration file (e.g., <code>~/.zshrc</code>, <code>~/.bashrc</code>). This gives you a convenient <code>claude-agents</code> command.</p>
-      <pre><code>alias claude-agents="git --git-dir=$HOME/.claude-agents.git/ --work-tree=$HOME"</code></pre>
+      <pre><code>alias dotagents="git --git-dir=$HOME/.dotagents.git/ --work-tree=$HOME"</code></pre>
       <p>After adding the alias, restart your shell or source your configuration file.</p>
     </section>
 
     <section id="step3">
       <h2>3. Check Out the Agents</h2>
       <p>These commands use <code>sparse-checkout</code> to ensure only the <code>.claude</code> directory is checked out, leaving other files in your home directory untouched.</p>
-      <pre><code>claude-agents sparse-checkout init --cone
-claude-agents sparse-checkout set .claude
-claude-agents checkout</code></pre>
+      <pre><code>dotagents sparse-checkout init --cone
+dotagents sparse-checkout set .claude
+dotagents checkout</code></pre>
     </section>
 
     <section id="existing-configs">
@@ -44,7 +44,7 @@ claude-agents checkout</code></pre>
         </li>
         <li>
           <strong>Run the Checkout Command:</strong>
-          <p>The checkout command from the previous step should now succeed. If it fails, you may need to force it: <code>claude-agents checkout -f</code>.</p>
+          <p>The checkout command from the previous step should now succeed. If it fails, you may need to force it: <code>dotagents checkout -f</code>.</p>
         </li>
         <li>
           <strong>Merge Your Backup:</strong>
@@ -60,7 +60,7 @@ claude-agents checkout</code></pre>
     <section id="updating">
         <h2>Updating the Agents</h2>
         <p>To pull the latest agents and updates from the repository, run:</p>
-        <pre><code>claude-agents pull</code></pre>
+        <pre><code>dotagents pull</code></pre>
     </section>
 
   </div>

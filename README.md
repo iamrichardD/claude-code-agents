@@ -1,4 +1,4 @@
-# Claude Code Agents
+# dotagents
 
 This repository provides a curated collection of pre-built, expert subagents for Claude Code, designed to bring consistency and best practices to your software development workflow.
 
@@ -14,22 +14,22 @@ This collection is for solo software engineers and software engineering teams wh
 
 This project uses a `git bare` repository to manage your agents, a powerful technique detailed in [this Atlassian article on dotfiles](https://www.atlassian.com/git/tutorials/dotfiles). This method is popular for its precision and control.
 
-To ensure this system **never** conflicts with your own dotfiles setup or other files in your home directory, the installation commands use Git's `sparse-checkout` feature. This guarantees that the `claude-agents` command will **only ever** read from or write to the `~/.claude` directory, making it completely safe to use alongside other tools. For more general information on dotfiles, see [dotfiles.github.io](https://dotfiles.github.io/).
+To ensure this system **never** conflicts with your own dotfiles setup or other files in your home directory, the installation commands use Git's `sparse-checkout` feature. This guarantees that the `dotagents` command will **only ever** read from or write to the `~/.claude` directory, making it completely safe to use alongside other tools. For more general information on dotfiles, see [dotfiles.github.io](https://dotfiles.github.io/).
 
 ### 1. Clone the Repository
 
 First, clone this repository to a hidden "bare" repository in your home directory.
 
 ```bash
-git clone --bare https://github.com/iamrichardd/claude-agents.git $HOME/.claude-agents.git
+git clone --bare https://github.com/iamrichardd/dotagents.git $HOME/.dotagents.git
 ```
 
 ### 2. Set Up the Alias
 
-Add the following alias to your shell configuration file (e.g., `~/.zshrc`, `~/.bashrc`, or `~/.config/fish/config.fish`). This gives you a convenient `claude-agents` command to manage your agents.
+Add the following alias to your shell configuration file (e.g., `~/.zshrc`, `~/.bashrc`, or `~/.config/fish/config.fish`). This gives you a convenient `dotagents` command to manage your agents.
 
 ```bash
-alias claude-agents="git --git-dir=$HOME/.claude-agents.git/ --work-tree=$HOME"
+alias dotagents="git --git-dir=$HOME/.dotagents.git/ --work-tree=$HOME"
 ```
 
 After adding the alias, restart your shell or source your configuration file (e.g., `source ~/.zshrc`).
@@ -39,9 +39,9 @@ After adding the alias, restart your shell or source your configuration file (e.
 These commands use `sparse-checkout` to ensure only the `.claude` directory is checked out, leaving other files in your home directory untouched.
 
 ```bash
-claude-agents sparse-checkout init --cone
-claude-agents sparse-checkout set .claude
-claude-agents checkout
+dotagents sparse-checkout init --cone
+dotagents sparse-checkout set .claude
+dotagents checkout
 ```
 
 ---
@@ -57,7 +57,7 @@ If you already have custom agents in `~/.claude/agents`, the following steps wil
     ```
 
 2.  **Run the Checkout Command:**
-    The `claude-agents checkout` command from the previous step should now succeed. If it fails due to local changes, you may need to force it: `claude-agents checkout -f`.
+    The `dotagents checkout` command from the previous step should now succeed. If it fails due to local changes, you may need to force it: `dotagents checkout -f`.
 
 3.  **Merge Your Backup:**
     If you created a backup, move your original agents into the new, version-controlled directory.
@@ -84,7 +84,7 @@ Once installed, Claude Code will automatically detect and use these agents based
 To pull the latest agents and updates from this repository:
 
 ```bash
-claude-agents pull
+dotagents pull
 ```
 
 ### Adding Your Own Agents
@@ -96,11 +96,11 @@ You can add your own custom agents and track them in the same repository:
 touch ~/.claude/agents/my-custom-agent.md
 
 # Add it to your repository
-claude-agents add ~/.claude/agents/my-custom-agent.md
-claude-agents commit -m "Add my custom agent"
+dotagents add ~/.claude/agents/my-custom-agent.md
+dotagents commit -m "Add my custom agent"
 
 # If you forked this repo, you can push your changes
-# claude-agents push
+# dotagents push
 ```
 
 ## Project Structure

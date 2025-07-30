@@ -21,7 +21,7 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   // ... other config
-  base: import.meta.env.MODE === 'production' ? '/claude-code-agents/' : '/',
+  base: import.meta.env.MODE === 'production' ? '/dotagents/' : '/',
 });
 ```
 

@@ -4,7 +4,7 @@ test('homepage displays the correct agent list', async ({ page }) => {
   await page.goto('/');
 
   // Check that the main heading is visible
-  await expect(page.getByRole('heading', { name: 'Welcome to Claude Code Agents' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Welcome to dotagents' })).toBeVisible();
 
   // Check that all five agents are listed
   await expect(page.getByText('agile-coach')).toBeVisible();

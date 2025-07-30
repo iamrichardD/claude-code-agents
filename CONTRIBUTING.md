@@ -1,4 +1,4 @@
-# Contributing to Claude Code Agents
+# Contributing to dotagents
 
 First off, thank you for considering contributing! This project thrives on community involvement, and we welcome your help in building a robust collection of agents for everyone.
 
