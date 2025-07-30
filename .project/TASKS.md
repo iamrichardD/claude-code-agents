@@ -37,14 +37,14 @@
 
 ## Milestone 5: Project Rebranding to "dotagents"
 
-- [ ] **Task 5.1 (User Task):** Rename the GitHub repository from `claude-code-agents` to `dotagents` on the GitHub website.
-- [ ] **Task 5.2 (Agent Task):** Update the local repository's remote URL to point to the new `dotagents` repository.
-- [ ] **Task 5.3:** Update the `astro.config.mjs` file with the new `site` URL (`https://iamrichardd.github.io/dotagents/`) and `base` path (`/dotagents/`).
-- [ ] **Task 5.4:** Update the `README.md` file, replacing all instances of "Claude Code Agents" with "dotagents" and updating the project description.
-- [ ] **Task 5.5:** Update the `package.json` in `src-gh-pages` to reflect the new project name.
-- [ ] **Task 5.6:** Update the logotype and titles in all `.astro` files.
-- [ ] **Task 5.7:** Update all other supporting documents (`CONTRIBUTING.md`, `LESSONS_LEARNED.md`, ADRs) to use the new "dotagents" name.
-- [ ] **Task 5.8:** Run the full test suite (`npx playwright test`) to ensure the rebranding did not break any functionality.
+- [x] **Task 5.1 (User Task):** Rename the GitHub repository from `claude-code-agents` to `dotagents` on the GitHub website.
+- [x] **Task 5.2 (Agent Task):** Update the local repository's remote URL to point to the new `dotagents` repository.
+- [x] **Task 5.3:** Update the `astro.config.mjs` file with the new `site` URL (`https://iamrichardd.github.io/dotagents/`) and `base` path (`/dotagents/`).
+- [x] **Task 5.4:** Update the `README.md` file, replacing all instances of "Claude Code Agents" with "dotagents" and updating the project description.
+- [x] **Task 5.5:** Update the `package.json` in `src-gh-pages` to reflect the new project name.
+- [x] **Task 5.6:** Update the logotype and titles in all `.astro` files.
+- [x] **Task 5.7:** Update all other supporting documents (`CONTRIBUTING.md`, `LESSONS_LEARNED.md`, ADRs) to use the new "dotagents" name.
+- [x] **Task 5.8:** Run the full test suite (`npx playwright test`) to ensure the rebranding did not break any functionality.
 
 ## Milestone 6: Content & Automation
 
