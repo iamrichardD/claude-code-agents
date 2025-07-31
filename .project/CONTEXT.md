@@ -6,7 +6,7 @@
 
 This project, now named **dotagents**, has successfully completed its initial development, testing, and rebranding phases. All work is committed and pushed to the `main` branch of the `git@github.com:iamrichardD/dotagents.git` repository.
 
-- **Milestones 0-5 are COMPLETE.**
+- **Milestones 0-6 are COMPLETE.**
 - The project has been rebranded to "dotagents".
 - A full website has been built with Astro and is located in `/.project/src-gh-pages/`.
 - The compiled website is in the `/docs/` directory, ready for GitHub Pages deployment.
@@ -19,13 +19,11 @@ To ensure a seamless continuation of our work and to re-establish our team's cul
 
 1.  Reading all agent personas in the `/.claude/agents/` directory.
 2.  Reading all knowledge-base documents in the `/.project/knowledge-base/` directory.
+3.  Adopt the `project-manager` persona to lead the session with a stand-up meeting simulation.
 
 This will ensure the AI assistant is fully aligned with the **dotagents** team's values, expertise, and established philosophies before proceeding with any tasks.
 
 ## Next Objective
 
-The immediate next step is to begin **Milestone 6: Content & Automation**.
+The immediate next step is to stage and commit updated documents to GitHub.
 
-The first task is **Task 6.1: Create a new `marketing-expert.md` agent persona.**
-
-This agent will be responsible for guiding the project's content strategy, starting with the creation of three key articles based on the plan in `/.project/TASKS.md` and the material in `/.project/SIMULATION_HISTORY.md`.

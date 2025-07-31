@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Development Insights - dotagents">
+  <main>
+    <h1>Development Insights</h1>
+    <p>This document captures key insights and solutions discovered during the development of this project. Its purpose is to help future contributors (including our future selves) avoid common pitfalls and understand the reasoning behind our technical decisions.</p>
+
+    <h2>1. The Astro `base` Configuration and Testing</h2>
+    <p><strong>Problem:</strong> When setting up our Playwright end-to-end tests, we encountered persistent failures. The tests expected the development server to be at the root (`/`), but Astro's dev server was running with a ` /claude-code-agents/` base path, causing URL mismatches.</p>
+    <p><strong>Incorrect Paths Explored:</strong></p>
+    <ul>
+      <li>We initially tried to make our tests more complex by adding logic to handle the different URL structures.</li>
+      <li>We considered removing the `base` configuration for development, which would have made the dev environment inaccurate.</li>
+    </ul>
+    <p><strong>The "Aha!" Moment & Correct Solution:</strong></p>
+    <p>The breakthrough came when we discovered the standard, idiomatic Astro solution for this exact problem: <strong>conditional configuration using `import.meta.env.MODE`</strong>.</p>
+    <p>By updating our `astro.config.mjs` to the following, we solved the problem cleanly:</p>
+    <pre><code>
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  // ... other config
+  base: import.meta.env.MODE === 'production' ? '/dotagents/' : '/',
+});
+    </code></pre>
+    <p><strong>Key Takeaway:</strong></p>
+    <p>Always look for the framework's idiomatic solution first. Our initial workarounds were more complex and less robust than the built-in feature Astro provides for handling environment-specific configurations. This approach keeps our development environment simple and our tests clean.</p>
+
+    <h2>2. Robust Test Assertions</h2>
+    <p><strong>Problem:</strong> Even after fixing the base path, our tests were still fragile because they were asserting against the exact URL string in the browser's address bar. This failed due to subtle differences in how trailing slashes were handled.</p>
+    <p><strong>The Lesson:</strong></p>
+    <p>We learned that testing the URL is an implementation detail. A much more robust and user-centric approach is to <strong>test for a unique and stable element on the destination page.</strong></p>
+    <p><strong>The Correct Solution:</strong></p>
+    <p>We updated our tests to rely on checking for the `<h1>` heading of the page. This is a much stronger assertion because it directly validates the user's primary confirmation that they have arrived in the right place.</p>
+    <pre><code>
+// Example from navigation.spec.ts
+
+// Fragile assertion (BAD):
+// await expect(page).toHaveURL(/.*\/installation\//);
+
+// Robust assertion (GOOD):
+await expect(page.getByRole('heading', { name: 'Installation', level: 1 })).toBeVisible();
+    </code></pre>
+    <p><strong>Key Takeaway:</strong></p>
+    <p>Write tests that verify the user's expected outcome, not the technical implementation. This makes tests more resilient to refactoring and minor configuration changes.</p>
+  </main>
+</Layout>

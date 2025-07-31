@@ -1,0 +1,41 @@
+---
+---
+<article class="prose">
+  <slot />
+</article>
+
+<style>
+  .prose {
+    max-width: 65ch;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .prose :global(h1) {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .prose :global(h2) {
+    font-size: 1.75rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .prose :global(p, li) {
+    font-size: 1.125rem;
+    line-height: 1.7;
+  }
+
+  .prose :global(pre) {
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #f1f3f5; /* A light gray background */
+    overflow-x: auto;
+  }
+
+  .prose :global(code) {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    font-size: 0.9rem;
+  }
+</style>

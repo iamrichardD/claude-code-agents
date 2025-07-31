@@ -16,6 +16,7 @@ Subagents are pre-configured AI personalities that Claude Code can delegate task
 When Claude Code encounters a task that matches a subagent's expertise, it can delegate that task to the specialized subagent, which works independently and returns results.
 
 ## Key benefits
+## Key benefits
 
 <CardGroup cols={2}>
   <Card title="Context preservation" icon="layer-group">

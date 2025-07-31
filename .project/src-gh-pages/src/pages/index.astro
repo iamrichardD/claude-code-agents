@@ -1,34 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const agents = [
-  {
-    name: 'agile-coach',
-    description: "An Agile coaching expert, inspired by XP and 'Making Users Awesome', that facilitates workflows, removes impediments, and empowers developers by ensuring smooth project execution."
-  },
-  {
-    name: 'designer',
-    description: "A web design expert focused on creating clean, modern, and intuitive interfaces using HTML First and Mobile First principles."
-  },
-  {
-    name: 'e2e-tester',
-    description: "An expert in Quality Assurance who writes and maintains end-to-end tests using Playwright, guided by a strong testing philosophy."
-  },
-  {
-    name: 'frontend-developer',
-    description: "An expert frontend developer who translates design into high-quality, performant, and accessible code, following XP and 'Making Users Awesome' principles."
-  },
-  {
-    name: 'project-manager',
-    description: "A project management expert for planning, scoping, and organizing software development tasks. Use to create project plans, break down features into tickets, and estimate timelines."
-  }
-];
+// Use import.meta.glob to get all agent markdown files.
+// The path is relative to the current file.
+const agentImports = import.meta.glob('../../../../.claude/agents/*.md');
+
+// import.meta.glob returns functions that need to be called to load the module.
+const agents = await Promise.all(
+  Object.values(agentImports).map(async (agentImport) => {
+    const { frontmatter } = await agentImport();
+    return {
+      name: frontmatter.name,
+      description: frontmatter.description,
+    };
+  })
+);
 ---
 
 <Layout title="dotagents">
   <section class="hero">
-    <h1>Welcome to dotagents</h1>
-    <p>A curated collection of expert agents to streamline your development workflow.</p>
+    <h1>Your AI Teammates Should Be as Consistent as Your Dev Environment.</h1>
+    <p>Stop treating your AI agents like disposable prompts and start treating them like code. `dotagents` provides a simple, powerful way to manage, version, and share your AI subagents, ensuring that everyone on your team has access to the same high-quality tools.</p>
+    <a href="/articles/how-to-expand-your-team-with-dotagents" class="cta-button">Read Our Story</a>
   </section>
 
   <section class="agent-list">

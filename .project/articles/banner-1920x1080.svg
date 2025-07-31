@@ -1,0 +1,36 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1920" height="1080" fill="#F8F9FA"/>
+<foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 1080px;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+            }
+            .logotype {
+                font-size: 120px;
+                font-weight: 600;
+                text-align: center;
+            }
+            .primary {
+                color: #4D5BCE;
+            }
+            .secondary {
+                color: #ADB5BD;
+                display: block;
+                font-size: 60px;
+                margin-top: 20px;
+            }
+        </style>
+        <div class="container">
+            <div class="logotype">
+                <span class="primary">dotagents</span>
+                <span class="secondary">How to Expand Your Team with AI Agents using Subagents and Git</span>
+            </div>
+        </div>
+    </div>
+</foreignObject>
+</svg>

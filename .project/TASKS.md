@@ -48,9 +48,18 @@
 
 ## Milestone 6: Content & Automation
 
-- [ ] **Task 6.1:** Create a new `marketing-expert.md` agent persona.
-- [ ] **Task 6.2:** Create a new `technical-writer.md` agent persona.
-- [ ] **Task 6.3:** Create the `CONTENT_STRATEGY.md` file to document the article outlines and branding notes.
-- [ ] **Task 6.4:** Write the three LinkedIn articles based on the defined strategy.
-- [ ] **Task 6.5:** Create a new "Development Insights" page on the website using content from `LESSONS_LEARNED.md`.
-- [ ] **Task 6.6:** Dynamically generate the agent list on the homepage using `Astro.glob()` to read from the `.claude/agents` directory.
+- [x] **Task 6.1:** Collaboratively define the `marketing-expert.md` agent persona.
+- [x] **Task 6.2:** Collaboratively define the `technical-writer.md` agent persona.
+- [x] **Task 6.3:** Create the `CONTENT_STRATEGY.md` file to document the article outlines and branding notes.
+- [x] **Task 6.4:** Collaboratively write the first article and save it to the project.
+- [x] **Task 6.5:** Create a new "Development Insights" page on the website using content from `LESSONS_LEARNED.md`.
+- [x] **Task 6.6:** Dynamically generate the agent list on the homepage.
+- [x] **Task 6.7:** Create a branded banner for the articles.
+- [x] **Task 6.8:** Create a new "Articles" page on the website and cross-post the first article.
+- [x] **Task 6.9:** Update the homepage to reflect the new content and brand message.
+
+## Milestone 7: The Next Article & Beyond
+
+- [ ] **Task 7.1:** Collaboratively write the second article: "Your AI Agents Should Have Heroes. Here’s Why."
+- [ ] **Task 7.2:** Collaboratively write the third article: "We Let an AI Team Argue About Our Test Suite. Here's What We Learned."
+- [ ] **Task 7.3:** Commit and push all changes to the repository.
