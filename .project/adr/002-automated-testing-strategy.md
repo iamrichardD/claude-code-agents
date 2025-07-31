@@ -1,7 +1,9 @@
 # 002: Automated Testing Strategy Selection
 
-**Date:** 2025-07-29
-**Status:** Accepted
+**Date:** 2025-07-31
+**Status:** Superseded
+
+*This ADR reflects the initial decision. The actual implementation evolved based on technical discoveries. See ADR-003 for the final, implemented strategy.*
 
 ## Context
 
