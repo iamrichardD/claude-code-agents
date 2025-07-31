@@ -115,3 +115,24 @@ This journey is a perfect illustration of a human-AI team working together to cr
 
 **Key Takeaway for Process:**
 This simulation was a meta-level breakthrough. We applied the principles of "Specification-First Development" to our own team. The key lesson was that our collaborative methods are themselves a product that requires clear specification, documentation, and architectural thinking. By creating dedicated SOP documents, we made our own process more robust, scalable, and resilient to context shifts, directly "eating our own dog food."
+
+---
+
+## 9. Case Study: The Hero-Pairing Vote
+
+**Context:** To determine the core examples for the "Your AI Agents Should Have Heroes" article, the team used a structured, democratic process to select the most compelling hero pairings.
+
+**The Process:**
+
+1.  **Proposal:** The Project Manager proposed five distinct pairings of the team's "heroes," each designed to illustrate a different facet of the core concept.
+2.  **Rank-Choice Voting:** Each agent persona cast a ranked vote, awarding 3 points to their first choice, 2 to their second, and 1 to their third. They each provided a rationale for their vote based on their unique perspective (e.g., Marketing Expert focused on brand story, Agile Coach on process efficiency).
+3.  **Tally and Selection:** The votes were tallied, revealing a clear consensus.
+
+**The Outcome:**
+
+The vote identified two winning pairings that would structure the article:
+*   **Winner:** Martin Fowler (Code) & Paul Ford (Words) - Chosen for its direct, practical application to the problem of "AI Slop."
+*   **Runner-up:** Kent Beck (Structure) & Frida Kahlo (Soul) - Chosen for its inspirational, out-of-the-box quality that showcases the breadth of the idea.
+
+**Key Takeaway for Process:**
+This simulation demonstrated the power of structured collaboration in making creative decisions. The rank-voting mechanism allowed the team to surface and weigh diverse perspectives quantitatively, leading to a well-reasoned and democratic outcome that all members were aligned on. It proved to be an effective method for avoiding lengthy, subjective debates and will be a valuable tool for future creative choices. The full dialogue was preserved as a source for a potential future article on collaborative decision-making.
