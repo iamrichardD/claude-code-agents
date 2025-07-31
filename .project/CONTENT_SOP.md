@@ -16,9 +16,10 @@ This document specifies the official process for creating, reviewing, and publis
 
 Content creation is a collaborative, interview-style process designed to capture the collective intelligence of the team.
 
-1.  **Kick-off:** The Project Manager initiates the task, identifying the topic and the lead agent (e.g., Technical Writer).
-2.  **Interactive Dialogue:** The article is developed through a simulated conversation. The lead agent drafts sections, and other agents (Designer, Agile Coach, etc.) provide feedback from their unique perspectives. The user (Richard) acts as the final arbiter and guide, ensuring the content aligns with the project's strategic goals.
-3.  **Iterative Refinement:** The article is built incrementally, with continuous feedback loops until the core content is finalized.
+1.  **Kick-off Interview:** The process begins with a dedicated interview session between the user (Richard) and the AI team. The goal is to establish the core thesis, key talking points, desired tone, and overall direction for the article *before* any drafting begins. This conversation serves as the primary source for the initial draft.
+2.  **Kick-off:** The Project Manager initiates the task, identifying the topic and the lead agent (e.g., Technical Writer).
+3.  **Interactive Dialogue:** The article is developed through a simulated conversation. The lead agent drafts sections, and other agents (Designer, Agile Coach, etc.) provide feedback from their unique perspectives. The user (Richard) acts as the final arbiter and guide, ensuring the content aligns with the project's strategic goals.
+4.  **Iterative Refinement:** The article is built incrementally, with continuous feedback loops until the core content is finalized.
 
 ## 4. Title Selection Workshop
 
