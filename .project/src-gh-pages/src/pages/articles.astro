@@ -1,7 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const articles = await Astro.glob('./articles/*.astro');
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('articles');
+const articles = allArticles.filter(article => !article.data.draft);
 ---
 
 <Layout title="Articles - dotagents">
@@ -10,7 +13,10 @@ const articles = await Astro.glob('./articles/*.astro');
     <ul>
       {articles.map(article => (
         <li>
-          <a href={article.url}>{article.frontmatter.title}</a>
+          <a href={`/articles/${article.slug}`}>
+            <h3>{article.data.title}</h3>
+          </a>
+          <p>{article.data.description}</p>
         </li>
       ))}
     </ul>

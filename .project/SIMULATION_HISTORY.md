@@ -136,3 +136,23 @@ The vote identified two winning pairings that would structure the article:
 
 **Key Takeaway for Process:**
 This simulation demonstrated the power of structured collaboration in making creative decisions. The rank-voting mechanism allowed the team to surface and weigh diverse perspectives quantitatively, leading to a well-reasoned and democratic outcome that all members were aligned on. It proved to be an effective method for avoiding lengthy, subjective debates and will be a valuable tool for future creative choices. The full dialogue was preserved as a source for a potential future article on collaborative decision-making.
+
+---
+
+## 10. The Architectural Style Debate: Functional vs. OOP
+
+**Context:** After implementing a state machine for the homepage accordion using a functional factory pattern, the user prompted a high-level discussion about our project's architectural philosophy.
+
+**The Core Question:** Should we prefer modern functional patterns (factories, closures) or a more traditional, explicit class-based Object-Oriented Programming (OOP) approach for our stateful logic?
+
+**Key Dialogue & Trade-offs:**
+
+> **Frontend Developer:** Argued that the functional approach offers true encapsulation via closures and avoids the `this` keyword, aligning with modern JavaScript best practices.
+
+> **Agile Coach:** Focused on team cohesion, noting that the best pattern is the one the team can maintain most easily. Acknowledged that for a different team with a strong classical OOP background, classes might be a better fit.
+
+> **User (Richard):** Raised the initial concern from an enterprise software perspective, where the explicitness of a class can be seen as more robust and less like a "code smell."
+
+**Outcome:** The team reached a consensus that for this project's context (Astro, Vite, modern frontend), the functional factory pattern was a valid and effective choice. The key was not the pattern itself, but the **explicitness of its contract**. By defining and exporting a clear TypeScript `type` for the object the factory creates, we achieve the same level of self-documentation and clarity as a class interface.
+
+**Key Takeaway for Process:** The team decided to formalize this preference by adding an "Architectural Style Guide" to the `TEAM_SOP.md`. This ensures that as the project grows, new components will be built with a consistent, agreed-upon architectural style, preventing future ambiguity.

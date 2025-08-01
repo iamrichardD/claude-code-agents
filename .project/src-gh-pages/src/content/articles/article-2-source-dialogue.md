@@ -1,3 +1,11 @@
+---
+title: "Source Material: Kick-off Interview for \"Your AI Agents Should Have Heroes\""
+draft: true
+description: "Source material - not for publication."
+publishDate: "2025-07-31"
+author: "The dotagents team"
+---
+
 # Source Material: Kick-off Interview for "Your AI Agents Should Have Heroes"
 
 This document contains the raw, unedited dialogue from the kick-off interview and voting session for the second article. It is preserved for independent review and as potential source material for future articles, as requested by Richard.

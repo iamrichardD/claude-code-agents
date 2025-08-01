@@ -1,7 +1,9 @@
 # 003: Final Implemented Testing Strategy
 
 **Date:** 2025-07-31
-**Status:** Accepted
+**Status:** Superseded
+
+**This ADR is superseded by the testing philosophies and strategies now codified directly in the `e2e-tester.md` agent persona.**
 
 ## Context
 
@@ -13,9 +15,10 @@ Our final, successful testing strategy is as follows:
 
 1.  **Tooling:** We use the standard **`@playwright/test`** test runner. The initial plan to use `@playwright/mcp` for interactive, agent-driven execution proved to be non-functional in our environment. The standard test runner, driven by the `npx playwright test` command, provides a reliable and effective way to automate our tests.
 
-2.  **Philosophy:** Our testing philosophy remains the same, but has been refined through practice:
-    *   **Test for User Outcomes:** We do not test for fragile implementation details like URL strings. Instead, we assert against stable, user-visible content, such as the `<h1>` heading of a page. This makes our tests more resilient.
-    *   **Framework Idioms First:** We prioritize using the built-in, idiomatic solutions provided by our framework (Astro) to solve environment-specific problems, such as using `import.meta.env.MODE` to handle the `base` path configuration.
+2.  **Philosophy:** Our testing philosophy has been significantly refined through practice:
+    *   **Focus on Custom Interactivity:** Our E2E tests are not intended to test static content or Astro's basic routing, which are assumed to work. Their primary purpose is to validate the custom, client-side JavaScript interactivity that we build.
+    *   **Test User Goals, Not Implementation:** We assert against the final, user-visible outcomes of an interaction (e.g., an element becomes visible), not the fragile implementation details (e.g., specific class names or URL strings).
+    *   **Framework Idioms First:** We prioritize using the built-in, idiomatic solutions provided by our framework (Astro) to solve environment-specific problems.
 
 3.  **Personnel:** The **`e2e-tester`** agent is responsible for writing and maintaining the test files, but execution is handled via the standard `npx` command, not through an interactive protocol.
 

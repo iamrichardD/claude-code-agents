@@ -26,3 +26,22 @@ Before beginning any new major creative task (such as writing a new article), an
 4.  **Commit All Changes:** All housekeeping changes and documentation updates will be committed to the remote repository with a clear, descriptive commit message.
 
 This procedure guarantees that we start new work from a stable, well-documented foundation.
+
+## Architectural Style Guide
+
+To ensure consistency and maintainability, the team has agreed on a preferred architectural style for our frontend code.
+
+### Stateful Logic: Functional Factory Pattern
+
+-   **Preference:** For stateful client-side logic (e.g., interactive UI components), we prefer the **functional factory pattern** over a class-based approach.
+-   **Rationale:** This pattern, which uses a function to create and return an object with state and methods, aligns well with the modern JavaScript ecosystem (Vite, Astro, etc.). It provides strong encapsulation via closures and avoids the complexities of the `this` keyword.
+-   **Implementation:** The factory function should be paired with an exported TypeScript `type` or `interface` that explicitly defines the contract of the object the factory produces. This ensures type safety and self-documenting code.
+-   **Example:** The `createAccordionMachine` in `src/logic/accordion.ts` is our reference implementation for this pattern.
+
+## Version Control
+
+### Commit Messages
+
+-   **Principle:** Commit messages must be plain text to ensure compatibility with shell environments.
+-   **Implementation:** Avoid using markdown formatting (like backticks or parentheses) or special characters (like apostrophes) that can be misinterpreted by the shell. Stick to simple, clear text.
+-   **Benefit:** This prevents command execution errors and ensures our version history is clean and reliable.

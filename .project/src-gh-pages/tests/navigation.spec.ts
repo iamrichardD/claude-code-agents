@@ -1,18 +1,15 @@
 import { test, expect } from '@playwright/test';
 
-test('main navigation works', async ({ page }) => {
-  // Start from the index page (the baseURL is set in the config)
+test('smoke test for basic navigation', async ({ page }) => {
+  // Start from the index page
   await page.goto('/');
 
-  // Find the link with the name "Installation" and click it.
-  await page.getByRole('link', { name: 'Installation' }).click();
+  // A simple check to ensure the main heading is there
+  await expect(page.getByRole('heading', { name: /Your AI Teammates/ })).toBeVisible();
 
-  // The new page should contain an h1 with "Installation".
-  await expect(page.getByRole('heading', { name: 'Installation', level: 1 })).toBeVisible();
+  // Click a single link to ensure routing is alive
+  await page.getByRole('link', { name: 'Articles' }).click();
 
-  // Find the link with the name "Contributing" and click it.
-  await page.getByRole('link', { name: 'Contributing' }).click();
-
-  // The new page should contain an h1 with "Contributing".
-  await expect(page.getByRole('heading', { name: 'Contributing', level: 1 })).toBeVisible();
+  // Verify we landed on the correct page
+  await expect(page.getByRole('heading', { name: 'Articles', level: 1 })).toBeVisible();
 });

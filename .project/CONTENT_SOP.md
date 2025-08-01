@@ -32,3 +32,10 @@ Once the article's content is finalized, the team will workshop the title.
 ## 5. Finalization and Publishing
 
 - Once the title is approved, the filename will be updated to match, and the article will be ready for the next steps in the publishing pipeline.
+
+## 6. Content Syndication
+
+- **Canonical Source:** The dotagents project website is the canonical, original source for all published articles.
+- **External Publishing:** When an article is republished on external platforms (such as LinkedIn, Medium, etc.), it must include the following attribution statement at the beginning or end of the article:
+
+> *"This article was originally published on the [dotagents project site](https://iamrichardd.github.io/dotagents/)."*

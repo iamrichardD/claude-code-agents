@@ -1,3 +1,9 @@
+---
+title: "dotagents: How to Expand Your Team with AI Agents using Subagents and Git"
+description: "A guide to managing and versioning your AI subagents using a dotfiles-based approach."
+publishDate: "2025-07-20"
+author: "The dotagents team"
+---
 
 # `dotagents`: How to Expand Your Team with AI Agents using Subagents and Git
 
