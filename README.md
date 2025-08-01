@@ -41,7 +41,7 @@ Run the following commands from anywhere in your terminal to check out the agent
 1.  **Initialize sparse-checkout and define the target directory:**
     ```bash
     cd ~/
-    dotagents sparse-checkout init --cone
+    dotagents sparse-checkout init --no-cone
     dotagents sparse-checkout set .claude/agents
     ```
 
