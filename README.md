@@ -34,20 +34,14 @@ alias dotagents="git --git-dir=$HOME/.dotagents.git/ --work-tree=$HOME"
 
 After adding the alias, restart your shell or source your configuration file (e.g., `source ~/.zshrc`).
 
-### 3. Check Out the Agents
+### 3. Check Out the Agent Files
 
-Run the following commands from anywhere in your terminal to check out the agent files into your home directory.
-
-1.  **Initialize sparse-checkout and define the target directory:**
+Run the following commands from anywhere in your terminal. This will configure your local repository to only track the `agents` directory and then pull those files into your `~/.claude` directory.
     ```bash
     cd ~/
     dotagents sparse-checkout init --no-cone
     dotagents sparse-checkout set .claude/agents
-    ```
-
-2.  **Check out the agent files:**
-    ```bash
-    dotagents checkout
+    dotagents sparse-checkout reapply
     ```
 
 3.  **Troubleshooting:**
