@@ -37,18 +37,20 @@ After adding the alias, restart your shell or source your configuration file (e.
 ### 3. Check Out the Agent Files
 
 Run the following commands from anywhere in your terminal. This will configure your local repository to only track the `agents` directory and then pull those files into your `~/.claude` directory.
-    ```bash
-    cd ~/
-    dotagents sparse-checkout init --no-cone
-    dotagents sparse-checkout set .claude/agents
-    dotagents sparse-checkout reapply
-    ```
 
-3.  **Troubleshooting:**
-    If the `~/.claude/agents` directory was not created, it's likely because you have an existing `~/.claude` directory that Git is hesitant to modify. You can safely force the checkout to create the `agents` subdirectory and populate it:
-    ```bash
-    dotagents checkout -f
-    ```
+```bash
+cd ~/
+dotagents sparse-checkout init --no-cone
+dotagents sparse-checkout set .claude/agents
+dotagents sparse-checkout reapply
+```
+
+**Troubleshooting:**
+If the `~/.claude/agents` directory is still not created after running the commands above, you can run the `checkout` command with the `-f` flag to force it:
+
+```bash
+dotagents checkout -f
+```
 
 ---
 
