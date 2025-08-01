@@ -36,10 +36,11 @@ After adding the alias, restart your shell or source your configuration file (e.
 
 ### 3. Check Out the Agents
 
-These commands use `sparse-checkout` to ensure only the `.claude/agents` directory from the repository is placed in your home directory.
+Run the following commands from anywhere in your terminal to check out the agent files into your home directory.
 
 1.  **Initialize sparse-checkout and define the target directory:**
     ```bash
+    cd ~/
     dotagents sparse-checkout init --cone
     dotagents sparse-checkout set .claude/agents
     ```
