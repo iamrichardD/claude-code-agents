@@ -58,8 +58,3 @@
 - [x] **Task 6.8:** Create a new "Articles" page on the website and cross-post the first article.
 - [x] **Task 6.9:** Update the homepage to reflect the new content and brand message.
 
-## Milestone 7: The Next Article & Beyond
-
-- [ ] **Task 7.1:** Collaboratively write the second article: "Your AI Agents Should Have Heroes. Here’s Why."
-- [ ] **Task 7.2:** Collaboratively write the third article: "We Let an AI Team Argue About Our Test Suite. Here's What We Learned."
-- [ ] **Task 7.3:** Commit and push all changes to the repository.

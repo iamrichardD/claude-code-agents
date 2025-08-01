@@ -1,73 +1,50 @@
 # Contributing to dotagents
 
-First off, thank you for considering contributing! This project thrives on community involvement, and we welcome your help in building a robust collection of agents for everyone.
+We welcome contributions to the **dotagents** project! Whether you're reporting a bug, suggesting a new agent, or improving our documentation, your input is valuable. Please take a moment to review these guidelines to ensure a smooth and effective collaboration.
 
 ## How to Contribute
 
-There are two main ways to contribute:
+- **Bug Reports:** Help us improve by reporting issues.
+- **Feature Requests:** Suggest new agents or enhancements.
+- **Pull Requests:** Contribute directly to the codebase or documentation.
 
-1.  **Propose a New Agent:** If you have an idea for a new agent persona that would be valuable to developers, you can create it and submit it.
-2.  **Improve an Existing Agent:** You can enhance the prompts, add tools, or refine the descriptions of existing agents.
+## Bug Reports
 
-All contributions are made via GitHub Pull Requests.
+We use GitHub Issues to track bugs. A well-documented bug report is the first step to fixing it.
 
-## Submitting a Pull Request
+**To file a bug report:**
 
-### Recommended Process for New Agents
+1.  **Search Existing Issues:** Before creating a new issue, please check if the bug has already been reported.
+2.  **Use the Bug Report Template:** Click the "New Issue" button on the repository's [Issues page](https://github.com/iamrichardd/dotagents/issues) and select the "Bug Report" template.
+3.  **Provide Detailed Information:** Fill out the template with as much detail as possible:
+    - A clear, descriptive title.
+    - A concise description of the bug.
+    - Step-by-step instructions to reproduce the issue.
+    - What you expected to happen.
+    - What actually happened.
+    - Screenshots, if applicable.
+    - Your operating system and relevant software versions.
 
-To ensure consistency and quality, we have a "Meta-Agent" process that we strongly recommend you use to create new agents. This process guides you through the necessary steps, from defining the persona to generating a well-structured agent file.
+### Our Bug Tracking Workflow
 
-To start this process, simply ask the AI assistant:
+1.  **Triage:** The `project-manager` will review new bug reports, label them, and ensure all necessary information is present.
+2.  **Assignment:** The `project-manager` will assign the issue to the most appropriate team member (or agent persona).
+3.  **Resolution:** The assigned team member will work on a fix.
+4.  **Closure:** Once the fix is merged, the issue will be closed.
 
-> "Let's create a new agent using the process in `META-AGENT-SOP.md`."
+## Feature Requests
 
-The assistant will then follow the defined workflow to help you build and save your agent.
+If you have an idea for a new agent or an improvement to an existing one, please open an issue using the "Feature Request" template. Provide a clear description of the proposed feature and why it would be valuable.
 
-### Manual Process
+## Pull Requests
 
-If you prefer to create an agent manually, please follow these steps:
+We welcome pull requests! If you'd like to contribute code or documentation, please follow these steps:
 
-1.  **Fork the Repository:** Create your own copy of the repository on GitHub.
-2.  **Clone Your Fork:** Clone your forked repository to your local machine.
-3.  **Create a Branch:** Create a new branch for your changes (e.g., `git checkout -b add-devops-agent`).
-4.  **Make Your Changes:** Create or edit the agent Markdown files in the `.claude/agents/` directory.
-5.  **Update the README:** If you are adding a new agent, you **must** add it to the "Available Agents" list in the `README.md` file. Please keep the list in alphabetical order.
-6.  **Commit Your Changes:** Use a clear and descriptive commit message (e.g., `feat: Add DevOps Engineer agent` or `fix: Refine prompt for Project Manager`).
-7.  **Push to Your Fork:** Push your changes to your forked repository.
-8.  **Open a Pull Request:** Go to the original repository and open a pull request from your fork.
+1.  **Fork the Repository:** Create your own fork of the `dotagents` repository.
+2.  **Create a Branch:** Create a new branch for your changes (`git checkout -b feature/my-new-feature`).
+3.  **Make Your Changes:** Implement your changes, adhering to the project's coding style and conventions.
+4.  **Commit Your Changes:** Write a clear, concise commit message.
+5.  **Push to Your Fork:** Push your changes to your forked repository.
+6.  **Open a Pull Request:** Submit a pull request to the `main` branch of the original repository.
 
-## Agent Style Guide
-
-To maintain consistency, please follow these guidelines when creating or editing agents.
-
-### 1. File Naming
-
--   Use `lowercase-with-hyphens.md` (e.g., `software-architect.md`).
-
-### 2. Frontmatter
-
--   `name`: Must match the filename (without the `.md` extension).
--   `description`: A single, clear sentence describing the agent's purpose and when it should be used. This is critical for Claude's automatic delegation.
--   `tools`: Only list tools that are essential for the agent's core function. If no specific tools are needed, leave it blank to inherit all tools.
-
-### 3. System Prompt
-
-The system prompt is the heart of the agent. It should be structured and detailed.
-
--   **Start with the Persona:** Begin with a clear declaration of the agent's role (e.g., "You are an expert DevOps Engineer...").
--   **Define Core Responsibilities:** Use a numbered or bulleted list to outline the agent's primary tasks.
--   **Provide a Process:** Briefly explain the steps the agent should take when invoked.
--   **Give Examples (Optional but Recommended):** Show an example of the desired output format.
--   **Be Clear and Direct:** Use simple, direct language. Avoid ambiguity.
-
-## A Note on Testing
-
-As our project now includes an automated end-to-end test suite, please consider if your changes could benefit from a new test case or require updates to an existing one. While not mandatory for all contributions, a commitment to testing is highly encouraged and aligns with our project's philosophy of quality.
-
-## Code of Conduct
-
-This project and its contributors are expected to follow a code of conduct. Please be respectful and constructive in all your interactions.
-
-## Licensing
-
-By contributing, you agree that your contributions will be licensed under the MIT License that covers the project.
+Thank you for helping us build a better set of tools for everyone!
