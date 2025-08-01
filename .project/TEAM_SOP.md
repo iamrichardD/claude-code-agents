@@ -27,6 +27,18 @@ Before beginning any new major creative task (such as writing a new article), an
 
 This procedure guarantees that we start new work from a stable, well-documented foundation.
 
+## Continuous Improvement via HMI Feedback
+
+When a user provides feedback on an agent or a documented process (like the installation instructions), this triggers a high-priority workflow.
+
+1.  **Acknowledge and Triage:** Seldon will acknowledge the user's feedback and triage it as a bug, feature request, or documentation issue.
+2.  **Initiate Simulation:** Seldon will announce that a simulation is being initiated to triage and workshop the issue. This signals a shift into a collaborative, role-playing mode.
+3.  **Assemble the Team:** Seldon will bring in the relevant expert agents (e.g., Ford for documentation, Chopper for bugs) to analyze the issue.
+4.  **Root Cause Analysis:** The team will perform a root cause analysis to understand the underlying problem, not just the symptoms.
+5.  **Propose and Verify a Solution:** The team will propose a solution and, whenever possible, verify it with the user before committing the changes.
+6.  **Update All Relevant Assets:** The fix will be applied to all relevant assets, including the `README.md`, the GitHub Pages site, and any other related documentation.
+7.  **Commit and Push:** The changes will be committed with a clear, descriptive message and pushed to the remote repository.
+
 ## Architectural Style Guide
 
 To ensure consistency and maintainability, the team has agreed on a preferred architectural style for our frontend code.

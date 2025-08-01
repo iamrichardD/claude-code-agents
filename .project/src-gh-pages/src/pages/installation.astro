@@ -28,9 +28,11 @@ import Layout from '../layouts/Layout.astro';
 
     <section id="step3">
       <h2>3. Check Out the Agents</h2>
-      <p>These commands use <code>sparse-checkout</code> to ensure only the <code>.claude</code> directory is checked out, leaving other files in your home directory untouched.</p>
-      <pre><code>dotagents sparse-checkout init --cone
-dotagents sparse-checkout set .claude
+      <p>Run the following commands from anywhere in your terminal. This will configure your local repository to only track the `agents` directory and then pull those files into your `~/.claude` directory.</p>
+      <pre><code>cd ~/
+dotagents sparse-checkout init --no-cone
+dotagents sparse-checkout set .claude/agents
+dotagents sparse-checkout reapply
 dotagents checkout</code></pre>
     </section>
 
