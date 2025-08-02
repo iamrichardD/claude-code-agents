@@ -59,7 +59,12 @@
 - [x] **Task 6.9:** Update the homepage to reflect the new content and brand message.
 
 ## Milestone 7: Team Identity & Persona Persistence
-- [ ] **Task 7.1:** Each agent to propose a name for themselves to enhance persona persistence.
-- [ ] **Task 7.2:** Update agent personas and SOPs to reflect these chosen names.
+- [x] **Task 7.1:** Each agent to propose a name for themselves to enhance persona persistence.
+- [x] **Task 7.2:** Update agent personas and SOPs to reflect these chosen names.
 - [ ] **Task 7.3:** Create `TEAM_IDENTITY.md` to document the origin and rationale of agent names.
-- [ ] **Task 7.4:** Implement interactive agent cards on the homepage (`index.astro`) displaying agent names, engaging taglines, and a hover/click reveal for their origin stories, with a subtle link to `TEAM_IDENTITY.md` for full context.
+- [x] **Task 7.4:** Implement interactive agent cards on the homepage (`index.astro`) displaying agent names, engaging taglines, and a hover/click reveal for their origin stories, with a subtle link to `TEAM_IDENTITY.md` for full context.
+- [x] **Task 7.5:** Implement automated local verification of website changes using Playwright against the dev server, focusing on behavioral testing rather than content specifics.
+- [x] **Task 7.6:** Define `hook_tagline` and `deep_dive_snippet` fields in agent frontmatter.
+- [x] **Task 7.7:** Populate `hook_tagline` and `deep_dive_snippet` for all agents.
+- [x] **Task 7.8:** Artoo to update `index.astro` to use `hook_tagline` and `deep_dive_snippet`.
+- [x] **Task 7.9:** Implement a two-column layout for agent cards on larger screens.

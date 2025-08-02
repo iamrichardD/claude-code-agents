@@ -1,41 +1,27 @@
 ---
+import Layout from './Layout.astro';
+const { frontmatter } = Astro.props;
 ---
-<article class="prose">
-  <slot />
-</article>
+<Layout title={frontmatter.title}>
+  <article class="content">
+    <h1>{frontmatter.title}</h1>
+    <p class="meta" data-publish-date={frontmatter.publishDate}>By {frontmatter.author} on {frontmatter.publishDate}</p>
+    <slot />
+  </article>
+</Layout>
 
-<style>
-  .prose {
-    max-width: 65ch;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-
-  .prose :global(h1) {
-    font-size: 2.25rem;
-    margin-bottom: 1rem;
-  }
-
-  .prose :global(h2) {
-    font-size: 1.75rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  .prose :global(p, li) {
-    font-size: 1.125rem;
-    line-height: 1.7;
-  }
-
-  .prose :global(pre) {
-    padding: 1rem;
-    border-radius: 8px;
-    background-color: #f1f3f5; /* A light gray background */
-    overflow-x: auto;
-  }
-
-  .prose :global(code) {
-    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-    font-size: 0.9rem;
-  }
-</style>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const metaElement = document.querySelector('.meta[data-publish-date]');
+    if (metaElement) {
+      const rawDate = metaElement.getAttribute('data-publish-date');
+      const date = new Date(rawDate);
+      const formattedDate = new Intl.DateTimeFormat(navigator.language, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      }).format(date);
+      metaElement.textContent = metaElement.textContent.replace(rawDate, formattedDate);
+    }
+  });
+</script>

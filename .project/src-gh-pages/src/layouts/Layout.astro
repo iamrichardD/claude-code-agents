@@ -18,15 +18,22 @@ const { title } = Astro.props;
 			<div class="logotype">
 				<a href="/" class="logotype-link">
 					<span class="primary">dotagents</span>
-					<span class="secondary">| An AI-Powered Development Team</span>
+					<span class="secondary">An AI-Powered Development Team</span>
 				</a>
 			</div>
-			<nav>
+			<nav id="main-nav">
 				<a href="/">Home</a>
 				<a href="/installation">Installation</a>
 				<a href="/contributing">Contributing</a>
 				<a href="/articles">Articles</a>
 			</nav>
+			<button id="hamburger-menu" aria-label="Toggle navigation">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<line x1="3" y1="12" x2="21" y2="12"></line>
+					<line x1="3" y1="6" x2="21" y2="6"></line>
+					<line x1="3" y1="18" x2="21" y2="18"></line>
+				</svg>
+			</button>
 		</header>
 		<main>
 			<slot />
@@ -36,6 +43,14 @@ const { title } = Astro.props;
 		</footer>
 	</body>
 </html>
+<script client:load>
+  const hamburgerButton = document.getElementById('hamburger-menu');
+  const mainNav = document.getElementById('main-nav');
+
+  hamburgerButton.addEventListener('click', () => {
+    mainNav.classList.toggle('is-open');
+  });
+</script>
 <style>
 	body {
 		display: flex;
@@ -48,6 +63,7 @@ const { title } = Astro.props;
 	}
 
 	header {
+		position: relative;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -58,18 +74,95 @@ const { title } = Astro.props;
 	.logotype-link {
 		text-decoration: none;
 		color: var(--text-primary);
+		display: flex; /* Use flexbox for alignment */
+		flex-direction: row; /* Default to horizontal */
+		align-items: center; /* Align items vertically */
+		gap: 0.5rem; /* Space between primary and secondary */
 	}
 
-	nav a {
-		margin-left: 1.5rem;
+	.logotype .secondary::before {
+		content: '|';
+		margin-right: 0.5rem;
 		color: var(--text-secondary);
-		text-decoration: none;
-		font-weight: 500;
 	}
 
-	nav a:hover {
+	@media (max-width: 767px) {
+		.logotype-link {
+			flex-direction: column; /* Stack them on mobile */
+			align-items: flex-start; /* Align to the left */
+			gap: 0.25rem; /* Reduce gap for stacked layout */
+		}
+
+		.logotype .secondary::before {
+			content: ''; /* Hide the separator on mobile */
+			margin-right: 0;
+		}
+	}
+
+	#main-nav {
+		display: none; /* Hidden by default on mobile */
+		flex-direction: column;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		background-color: var(--background-color);
+		border-top: 1px solid var(--border-color);
+		padding: 1rem 0;
+		box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+		z-index: 1000;
+	}
+
+	#main-nav.is-open {
+		display: flex; /* Show when open */
+	}
+
+	#main-nav a {
+		padding: 0.8rem 2rem;
+		text-align: center;
+		color: var(--text-primary);
+		text-decoration: none;
+		display: block;
+	}
+
+	#main-nav a:hover {
+		background-color: var(--border-color);
+	}
+
+	#hamburger-menu {
+		display: block; /* Show on mobile */
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0.5rem;
+	}
+
+	#hamburger-menu svg {
 		color: var(--primary-color);
-		text-decoration: underline;
+	}
+
+	@media (min-width: 768px) {
+		#main-nav {
+			display: flex; /* Always visible on desktop */
+			position: static;
+			flex-direction: row;
+			width: auto;
+			background-color: transparent;
+			border-top: none;
+			padding: 0;
+			box-shadow: none;
+		}
+
+		#main-nav a {
+			padding: 0;
+			margin-left: 1.5rem;
+			text-align: left;
+			display: inline-block;
+		}
+
+		#hamburger-menu {
+			display: none; /* Hide on desktop */
+		}
 	}
 
 	footer {

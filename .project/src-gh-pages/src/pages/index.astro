@@ -10,8 +10,11 @@ const agents = await Promise.all(
     const filename = path.split('/').pop();
     return {
       name: frontmatter.name,
+      alias: frontmatter.alias,
       description: frontmatter.description,
-      content: rawContent(),
+      hook_tagline: frontmatter.hook_tagline,
+      deep_dive_snippet: frontmatter.deep_dive_snippet,
+      content: rawContent().split('---').slice(2).join('---'),
       githubUrl: `https://github.com/iamrichardd/dotagents/blob/main/.claude/agents/${filename}`,
     };
   })
@@ -20,9 +23,9 @@ const agents = await Promise.all(
 
 <Layout title="dotagents">
   <section class="hero">
-    <h1>Your AI Teammates Should Be as Consistent as Your Dev Environment.</h1>
+    <h1>Your AI Teammates Should Be as Consistent As Your Dev Environment.</h1>
     <p>Stop treating your AI agents like disposable prompts and start treating them like code. `dotagents` provides a simple, powerful way to manage, version, and share your AI subagents, ensuring that everyone on your team has access to the same high-quality tools.</p>
-    <a href="/articles/how-to-expand-your-team-with-dotagents" class="cta-button">Read Our Story</a>
+    <a href="/articles/dotagents-how-to-expand-your-team-with-ai-agents-using-subagents-and-git" class="cta-button">Read Our Story</a>
   </section>
 
   <section class="agent-list">
@@ -31,13 +34,18 @@ const agents = await Promise.all(
       {agents.map((agent, index) => (
         <li class="agent-item" data-index={index}>
           <button class="agent-header">
-            <h3>{agent.name}</h3>
-            <p>{agent.description}</p>
+            <div class="agent-text-content">
+              <h3>
+              <span class="agent-alias">{agent.alias}</span>
+              <span class="agent-role">({agent.name})</span>
+            </h3>
+              <p>{agent.hook_tagline}</p>
+            </div>
             <span class="icon">+</span>
           </button>
           <div class="agent-content">
             <div class="agent-content-inner">
-              <pre><code>{agent.content}</code></pre>
+              <div class="agent-content-text">{agent.deep_dive_snippet}</div>
               <a href={agent.githubUrl} target="_blank" rel="noopener noreferrer" class="github-link">View on GitHub</a>
             </div>
           </div>
@@ -81,9 +89,17 @@ const agents = await Promise.all(
 <style>
   /* ... existing styles ... */
   .hero {
+    max-width: 800px;
+    margin: 0 auto;
     text-align: center;
-    padding: 4rem 1rem;
+    padding: 0 1em;
     background-color: var(--background-color);
+  }
+
+  @media (min-width: 768px) {
+    .hero {
+      padding: 4em 1em 0;
+    }
   }
 
   .hero h1 {
@@ -112,14 +128,18 @@ const agents = await Promise.all(
   .agent-accordion {
     list-style: none;
     padding: 0;
-    display: grid;
-    gap: 1rem;
+    display: grid; /* Always a grid */
+    grid-template-columns: 1fr; /* Single column by default */
+    gap: 1rem; /* Consistent gap for all screen sizes */
   }
 
   .agent-item {
     border: 1px solid var(--border-color);
     border-radius: 8px;
     overflow: hidden;
+    position: relative; /* Establish a stacking context */
+    z-index: 1; /* Default stacking order */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease; /* Smooth transitions */
   }
 
   .agent-header {
@@ -129,28 +149,36 @@ const agents = await Promise.all(
     text-align: left;
     padding: 1.5rem;
     cursor: pointer;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 1rem;
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Distribute space between items */
+    align-items: flex-start; /* Align items to the top */
   }
 
   .agent-header h3 {
-    margin: 0;
+    margin: 0 0 0.5rem 0; /* Add margin-bottom to h3 */
     color: var(--primary-color);
     font-size: 1.5rem;
+    flex-shrink: 0; /* Prevent them from shrinking */
   }
 
   .agent-header p {
     margin: 0;
     grid-column: 1;
     color: var(--text-secondary);
+    flex-shrink: 0; /* Prevent them from shrinking */
+  }
+
+  .agent-text-content {
+    display: flex;
+    flex-direction: column; /* Stack h3 and p vertically */
   }
 
   .icon {
     font-size: 2rem;
     color: var(--primary-color);
     transition: transform 0.2s ease;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+    margin-left: 1rem; /* Add some space between content and icon */
   }
 
   .agent-item.active .icon {
@@ -161,11 +189,11 @@ const agents = await Promise.all(
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    background-color: #f9f9f9;
+    background-color: transparent; /* Make default background transparent */
   }
 
   .agent-content-inner {
-    padding: 1.5rem;
+    padding: 0 1.5rem 1.5rem 1.5rem; /* Remove top padding, keep others */
   }
 
   .agent-content pre {
@@ -187,10 +215,72 @@ const agents = await Promise.all(
     padding: 0.5rem 1rem;
     border-radius: 4px;
     transition: background-color 0.2s ease, color 0.2s ease;
+    margin-left: auto; /* Pushes the link to the right */
+    display: block; /* Ensures margin-left: auto works */
+    width: fit-content; /* Prevents it from stretching across */
   }
 
   .github-link:hover {
     background-color: var(--primary-color);
     color: white;
   }
-</style>
+
+/* Style for the github-link within an active agent-item */
+.agent-item.active .github-link {
+  background-color: var(--primary-color); /* Give it a solid background */
+  color: var(--background-color); /* Change text color for contrast */
+  border-color: var(--primary-color); /* Keep border consistent with background */
+}
+
+/* Ensure hover state for the github-link within an active item is also defined */
+.agent-item.active .github-link:hover {
+  background-color: var(--text-primary); /* A slightly different hover color */
+  color: var(--background-color);
+  border-color: var(--text-primary);
+}
+  .agent-header h3 .agent-alias {
+    /* Keep the primary color and font size for the alias */
+    color: var(--primary-color);
+    font-size: 1.5rem; /* Or whatever the current h3 font-size is */
+    font-weight: 600; /* Make it bold */
+  }
+
+  .agent-header h3 .agent-role {
+    /* Subdue the role slightly */
+    color: var(--text-secondary); /* A lighter gray */
+    font-size: 1.2rem; /* Slightly smaller than the alias */
+    font-weight: 400; /* Regular weight */
+    margin-left: 0.5rem; /* Small space between name and role */
+  }
+
+/* Hover effect for agent cards */
+.agent-item:hover {
+  background-color: var(--border-color); /* A slightly lighter background on hover */
+  cursor: pointer;
+  border-color: var(--primary-color); /* Add primary color to border on hover */
+  z-index: 2; /* Lift hovered item slightly above neighbors */
+}
+
+/* Active state for expanded agent cards */
+.agent-item.active {
+  background-color: var(--border-color); /* Use the hover color for the entire active card */
+  border-color: var(--primary-color); /* Highlight border with primary color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
+  z-index: 3; /* Lift active item highest */
+}
+
+/* Ensure the content area also adopts the active background */
+.agent-item.active .agent-content {
+  background-color: var(--border-color); /* Match the active background color */
+}
+
+/* Remove hover effect from header when parent item is active */
+.agent-item.active .agent-header:hover {
+  background-color: transparent; /* Or the same as agent-item.active background */
+  cursor: default; /* Change cursor back to default */
+}
+
+/* Ensure the header also responds to hover if it's a separate clickable area */
+.agent-header:hover {
+  background-color: var(--border-color); /* Match item hover for consistency */
+}

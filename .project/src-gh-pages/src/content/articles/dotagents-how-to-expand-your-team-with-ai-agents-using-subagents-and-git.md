@@ -5,8 +5,6 @@ publishDate: "2025-07-20"
 author: "The dotagents team"
 ---
 
-# `dotagents`: How to Expand Your Team with AI Agents using Subagents and Git
-
 Last week's release of subagents by Anthropic was a significant moment for AI-assisted development. Like many developers, I was immediately excited by the potential to create specialized AI collaborators, moving beyond generic prompts to build a truly bespoke development team.
 
 This initial excitement, however, quickly led to a practical question: **How do we manage these agents effectively?**
