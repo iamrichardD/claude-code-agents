@@ -27,24 +27,54 @@ Before we dive in, it's important to highlight a key design principle of this ap
 
 First, we create a "bare" git repository in our home directory. A bare repository has no working directory, which means it keeps the git history neatly tucked away and never interferes with your home folder's files.
 
-`git clone --bare https://github.com/iamrichardd/dotagents.git $HOME/.dotagents.git`
+```bash
+git clone --bare https://github.com/iamrichardd/dotagents.git $HOME/.dotagents.git
+```
 
 **Step 2: Create a Convenient Alias**
 
 Next, we set up a simple alias in our shell's configuration file (`.zshrc`, `.bashrc`, etc.) to make managing our agents easy.
 
-`alias dotagents="git --git-dir=$HOME/.dotagents.git/ --work-tree=$HOME"`
+```bash
+alias dotagents="git --git-dir=$HOME/.dotagents.git/ --work-tree=$HOME"
+```
 
 *(Pro-Tip: After adding this alias, you'll need to restart your shell or source your configuration file (e.g., `source ~/.zshrc`) for the new `dotagents` command to become available in your terminal. However, the good news is that once you've checked out your agents, you don't need to restart Claude Code. It will automatically detect any new subagents in the `~/.claude/agents` directory.)*
 
-**Step 3: Check Out Your Agents**
+**Step 3: Configure Sparse Checkout**
+  
+Configure the repository to only track the agents directory:
 
-Finally, we use our new `dotagents` command to pull down the agents into the correct directory.
+```bash
+dotagents sparse-checkout init --no-cone
+dotagents sparse-checkout set .claude/agents
+dotagents sparse-checkout reapply
+dotagents checkout
+```
 
-`dotagents sparse-checkout set .claude`
-`dotagents checkout`
+**Step 4: Configure Git Exclude Patterns (Critical Step)**
 
-And that's it. Your subagents are now installed and ready to use.
+This step is essential to prevent `dotagents status` from showing thousands of files from your entire home directory:
+
+```bash
+cat > ~/.dotagents.git/info/exclude << 'EOF'
+# Exclude everything in home directory by default
+*
+
+# But include .claude directory and its contents  
+!/.claude/
+!/.claude/agents/
+!/.claude/agents/**
+EOF
+```
+
+**Verify the setup works:**
+```bash
+# This should show only your agent files, not your entire home directory
+dotagents status
+```
+
+And that's it. Your subagents are now installed and ready to use with a clean, manageable git interface.
 
 **A Note on Team Adoption**
 
