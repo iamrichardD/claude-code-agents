@@ -10,16 +10,32 @@
 <p>Before we dive in, it’s important to highlight a key design principle of this approach. The following commands use <code>git sparse-checkout</code>. This is a deliberate choice to ensure that our agent management system <em>only</em> ever interacts with the <code>~/.claude</code> directory. It will never conflict with your existing dotfiles or other files in your home directory. This isn’t just a clever hack; it’s a professional, safely-designed system that respects your development environment.</p>
 <p><strong>Step 1: Initialize the Bare Repository</strong></p>
 <p>First, we create a “bare” git repository in our home directory. A bare repository has no working directory, which means it keeps the git history neatly tucked away and never interferes with your home folder’s files.</p>
-<p><code>git clone --bare https://github.com/iamrichardd/dotagents.git $HOME/.dotagents.git</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> clone</span><span style="color:#79B8FF"> --bare</span><span style="color:#9ECBFF"> https://github.com/iamrichardd/dotagents.git</span><span style="color:#E1E4E8"> $HOME</span><span style="color:#9ECBFF">/.dotagents.git</span></span></code></pre>
 <p><strong>Step 2: Create a Convenient Alias</strong></p>
 <p>Next, we set up a simple alias in our shell’s configuration file (<code>.zshrc</code>, <code>.bashrc</code>, etc.) to make managing our agents easy.</p>
-<p><code>alias dotagents="git --git-dir=$HOME/.dotagents.git/ --work-tree=$HOME"</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#F97583">alias</span><span style="color:#E1E4E8"> dotagents</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"git --git-dir=</span><span style="color:#E1E4E8">$HOME</span><span style="color:#9ECBFF">/.dotagents.git/ --work-tree=</span><span style="color:#E1E4E8">$HOME</span><span style="color:#9ECBFF">"</span></span></code></pre>
 <p><em>(Pro-Tip: After adding this alias, you’ll need to restart your shell or source your configuration file (e.g., <code>source ~/.zshrc</code>) for the new <code>dotagents</code> command to become available in your terminal. However, the good news is that once you’ve checked out your agents, you don’t need to restart Claude Code. It will automatically detect any new subagents in the <code>~/.claude/agents</code> directory.)</em></p>
-<p><strong>Step 3: Check Out Your Agents</strong></p>
-<p>Finally, we use our new <code>dotagents</code> command to pull down the agents into the correct directory.</p>
-<p><code>dotagents sparse-checkout set .claude</code>
-<code>dotagents checkout</code></p>
-<p>And that’s it. Your subagents are now installed and ready to use.</p>
+<p><strong>Step 3: Configure Sparse Checkout</strong></p>
+<p>Configure the repository to only track the agents directory:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">dotagents</span><span style="color:#9ECBFF"> sparse-checkout</span><span style="color:#9ECBFF"> init</span><span style="color:#79B8FF"> --no-cone</span></span>
+<span class="line"><span style="color:#B392F0">dotagents</span><span style="color:#9ECBFF"> sparse-checkout</span><span style="color:#9ECBFF"> set</span><span style="color:#9ECBFF"> .claude/agents</span></span>
+<span class="line"><span style="color:#B392F0">dotagents</span><span style="color:#9ECBFF"> sparse-checkout</span><span style="color:#9ECBFF"> reapply</span></span>
+<span class="line"><span style="color:#B392F0">dotagents</span><span style="color:#9ECBFF"> checkout</span></span></code></pre>
+<p><strong>Step 4: Configure Git Exclude Patterns (Critical Step)</strong></p>
+<p>This step is essential to prevent <code>dotagents status</code> from showing thousands of files from your entire home directory:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">cat</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF"> ~/.dotagents.git/info/exclude</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#9ECBFF"> 'EOF'</span></span>
+<span class="line"><span style="color:#9ECBFF"># Exclude everything in home directory by default</span></span>
+<span class="line"><span style="color:#9ECBFF">*</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9ECBFF"># But include .claude directory and its contents  </span></span>
+<span class="line"><span style="color:#9ECBFF">!/.claude/</span></span>
+<span class="line"><span style="color:#9ECBFF">!/.claude/agents/</span></span>
+<span class="line"><span style="color:#9ECBFF">!/.claude/agents/**</span></span>
+<span class="line"><span style="color:#9ECBFF">EOF</span></span></code></pre>
+<p><strong>Verify the setup works:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># This should show only your agent files, not your entire home directory</span></span>
+<span class="line"><span style="color:#B392F0">dotagents</span><span style="color:#9ECBFF"> status</span></span></code></pre>
+<p>And that’s it. Your subagents are now installed and ready to use with a clean, manageable git interface.</p>
 <p><strong>A Note on Team Adoption</strong></p>
 <p>While the technical steps are simple, the most important part of this process is the human one. Before implementing this system, have a conversation with your team. Discuss which agents you want to standardize and why. By agreeing on a shared set of tools, you’re not just managing files; you’re building a shared culture of quality and consistency.</p>
 <h3 id="conclusion-dev-parity-for-your-ai-teammates">Conclusion: Dev Parity for Your AI Teammates</h3>

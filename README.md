@@ -52,6 +52,31 @@ If the `~/.claude/agents` directory is still not created after running the comma
 dotagents checkout -f
 ```
 
+### 4. Configure Git Exclude Patterns (Critical Step)
+
+**Why this step matters:** Without this configuration, `dotagents status` will show thousands of files from your entire home directory, making the command unusable. This step tells Git to ignore everything except your agents.
+
+Create the exclude file with the proper patterns:
+```bash
+cat > ~/.dotagents.git/info/exclude << 'EOF'
+# Exclude everything in home directory by default
+*
+
+# But include .claude directory and its contents  
+!/.claude/
+!/.claude/agents/
+!/.claude/agents/**
+EOF
+```
+
+**Verify the setup works:**
+```bash
+# This should now show only your agent files, not your entire home directory
+dotagents status
+```
+
+You should see either "nothing to commit, working tree clean" or only files from your `~/.claude/agents/` directory.
+
 ---
 
 ### **Merging Your Existing Custom Agents**

@@ -5,7 +5,21 @@ This project uses a <code>git bare</code> repository to manage your agents, a po
 dotagents sparse-checkout init --no-cone
 dotagents sparse-checkout set .claude/agents
 dotagents sparse-checkout reapply
-dotagents checkout</code></pre> </section> <section id="existing-configs"> <h2>Important: Handling Existing Configurations</h2> <p>If you already have custom agents in <code>~/.claude/agents</code>, these steps will help you perform a safe merge.</p> <ol> <li> <strong>Back Up Your Existing Agents:</strong> <pre><code>[ -d ~/.claude/agents ] && mv ~/.claude/agents ~/.claude/agents.backup</code></pre> </li> <li> <strong>Run the Checkout Command:</strong> <p>The checkout command from the previous step should now succeed. If it fails, you may need to force it: <code>dotagents checkout -f</code>.</p> </li> <li> <strong>Merge Your Backup:</strong> <pre><code>[ -d ~/.claude/agents.backup ] && mv ~/.claude/agents.backup/* ~/.claude/agents/</code></pre> </li> <li> <strong>Clean Up:</strong> <pre><code>[ -d ~/.claude/agents.backup ] && rm -rf ~/.claude/agents.backup</code></pre> </li> </ol> </section> <section id="updating"> <h2>Updating the Agents</h2> <p>To pull the latest agents and updates from the repository, run:</p> <pre><code>dotagents pull</code></pre> </section> </div>  </main> <footer data-astro-cid-sckkx6r4> <p data-astro-cid-sckkx6r4>&copy; 2025 dotagents. All rights reserved.</p> </footer> <script client:load>
+dotagents checkout</code></pre> </section> <section id="step4"> <h2>4. Configure Git Exclude Patterns (Critical Step)</h2> <div style="background-color: #fff3cd; padding: 1rem; border-radius: 8px; border-left: 4px solid #f39c12; margin: 1rem 0;"> <p><strong>Why this step matters:</strong> Without this configuration, <code>dotagents status</code> will show thousands of files from your entire home directory, making the command unusable. This step tells Git to ignore everything except your agents.</p> </div> <p>Create the exclude file with the proper patterns:</p> <pre><code>cat > ~/.dotagents.git/info/exclude << 'EOF'
+# Exclude everything in home directory by default
+*
+
+# But include .claude directory and its contents  
+!/.claude/
+!/.claude/agents/
+!/.claude/agents/**
+EOF</code></pre> <p><strong>Verify the setup works:</strong></p> <pre><code># This should now show only your agent files, not your entire home directory
+dotagents status</code></pre> <p>You should see either "nothing to commit, working tree clean" or only files from your <code>~/.claude/agents/</code> directory.</p> </section> <section id="existing-configs"> <h2>Important: Handling Existing Configurations</h2> <p>If you already have custom agents in <code>~/.claude/agents</code>, these steps will help you perform a safe merge.</p> <ol> <li> <strong>Back Up Your Existing Agents:</strong> <pre><code>[ -d ~/.claude/agents ] && mv ~/.claude/agents ~/.claude/agents.backup</code></pre> </li> <li> <strong>Run the Checkout Command:</strong> <p>The checkout command from the previous step should now succeed. If it fails, you may need to force it: <code>dotagents checkout -f</code>.</p> </li> <li> <strong>Merge Your Backup:</strong> <pre><code>[ -d ~/.claude/agents.backup ] && mv ~/.claude/agents.backup/* ~/.claude/agents/</code></pre> </li> <li> <strong>Clean Up:</strong> <pre><code>[ -d ~/.claude/agents.backup ] && rm -rf ~/.claude/agents.backup</code></pre> </li> </ol> </section> <section id="updating"> <h2>Updating the Agents</h2> <p>To pull the latest agents and updates from the repository, run:</p> <pre><code>dotagents pull</code></pre> </section> <section id="troubleshooting"> <h2>Troubleshooting</h2> <h3>Problem: <code>dotagents status</code> shows thousands of home directory files</h3> <p>If you see your entire home directory listed in <code>dotagents status</code>, the Git exclude patterns weren't configured properly.</p> <p><strong>Solution:</strong> Create the exclude file manually:</p> <pre><code>cat > ~/.dotagents.git/info/exclude << 'EOF'
+*
+!/.claude/
+!/.claude/agents/
+!/.claude/agents/**
+EOF</code></pre> <p>Then test again:</p> <pre><code>dotagents status</code></pre> <p>You should now see only your agent files, not your entire home directory.</p> </section> </div>  </main> <footer data-astro-cid-sckkx6r4> <p data-astro-cid-sckkx6r4>&copy; 2025 dotagents. All rights reserved.</p> </footer> <script client:load>
   const hamburgerButton = document.getElementById('hamburger-menu');
   const mainNav = document.getElementById('main-nav');
 
