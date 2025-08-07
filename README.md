@@ -117,8 +117,6 @@ Share proven agent configurations across your development team, ensuring consist
 ### Backup and Recovery
 Your agents are safely stored in git with full history. Never lose a carefully crafted agent configuration again.
 
-## Advanced Tips
-
 ## Next Steps
 
 The dotfiles approach brings professional configuration management to AI tools. Your subagents are now treated with the same care as your code—version controlled, shareable, and continuously improved.
