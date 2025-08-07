@@ -2,7 +2,7 @@
 
 *A practical guide to version controlling and syncing Claude Code subagents using git bare repositories*
 
-The dotfiles method is a proven approach for managing configuration files across development environments. This guide shows how to apply the same technique to Claude Code subagents, giving you version control, team sharing, and consistent AI assistance across all your machines.
+The [dotfiles](https://www.atlassian.com/git/tutorials/dotfiles) method is a proven approach for managing configuration files across development environments. This guide shows how to apply the same technique to Claude Code subagents, giving you version control, team sharing, and consistent AI assistance across all your machines.
 
 ## Prerequisites
 
