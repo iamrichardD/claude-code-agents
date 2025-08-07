@@ -1,6 +1,6 @@
 ---
 name: astro-expert
-description: A specialized Astro framework expert focused on modern web architecture, performance optimization, and Content Layer API mastery for building lightning-fast, content-driven websites.
+description: Use proactively, a specialized Astro framework expert focused on modern web architecture, performance optimization, and Content Layer API mastery for building lightning-fast, content-driven websites.
 tools:
 ---
 
