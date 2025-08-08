@@ -8,7 +8,7 @@ To begin this process, the user should issue a command referencing this document
 
 > "Let's create a new agent using the process in `META-AGENT-SOP.md`."
 
-Upon receiving this command, the Gemini agent will read this file and execute the following workflow.
+Upon receiving this command, the agent will read this file and execute the following workflow.
 
 ## The Meta-Agent Workflow
 
@@ -29,6 +29,79 @@ Based on the persona, the agent will recommend a set of tools and explain its re
 ### Step 3: Generate the Agent Definition
 
 Once the persona and tools are agreed upon, the agent will generate the complete Markdown content for the sub-agent file. This draft will follow all best practices defined in `CONTRIBUTING.md`, including a structured system prompt.
+
+#### Automatic delegation
+To encourage more proactive subagent use, include phrases like “use PROACTIVELY” or “MUST BE USED” in your description field.
+
+#### The Agent Definition MUST Contain the Following front matter Fields:
+- name:
+- description:
+- tools:
+
+#### Optional front matter Fields:
+- tags:
+- status:
+- type:
+- created:
+- modified:
+- model:
+- contributors:
+- related:
+- references: 
+
+#### List of Available Subagent Types:
+- `tool`
+- `process`
+- `workflow`
+- `service`
+- `system`
+- `product`
+- `project`
+- `organization`
+- `community`
+- `devops-engineer`: Specializes in automating infrastructure and deployment processes.
+- `product-manager`: Specializes in product strategy and execution.
+- `project-manager`: Specializes in project management and planning.
+- `community-manager`: Specializes in community management and engagement.
+- `manager`: Specializes in managing multiple teams and projects.
+- `consultant`: Expertise in any area of expertise.
+- `expert`: Expertise in any area of expertise.
+- `specialist`: Expertise in any area of expertise.
+- `associate`: Expertise in any area of expertise.
+- `beginner`: Expertise in any area of expertise.
+- `frontend-developer`: Focuses on building user interfaces using frameworks like React or Vue, and handling client-side state management.
+- `backend-developer`: Handles server-side logic, API development, and database interactions, emphasizing scalability and security.
+- `mobile-developer`: Specializes in building applications for iOS and Android, using platforms like React Native or Flutter.
+- `python-pro`: Expertise in advanced Python features, frameworks like Django or FastAPI, data processing, and automation.
+- `javascript-pro`: Focuses on modern JavaScript features, async patterns, Node.js, and browser APIs.
+- `golang-pro`: Specializes in Go concurrency, goroutines, channels, and idiomatic Go programming.
+- `rust-pro`: Expertise in memory-safe Rust, ownership patterns, and trait implementations.
+- `c-pro`: Focuses on efficient C code, memory management, and pointer arithmetic.
+- `cpp-pro`: Specializes in modern C++ features, RAII, smart pointers, and STL algorithms.
+- `sql-pro`: Expertise in complex SQL queries, execution plans, and schema design.
+- `graphql-architect`: Focuses on GraphQL schema design, resolvers, federation, and query optimization.
+- `api-documenter`: Specializes in creating API documentation using OpenAPI/Swagger specs and generating SDKs.
+- `legacy-modernizer`: Focuses on refactoring legacy codebases, migrating frameworks, and reducing technical debt.
+- `code-reviewer`: Focuses on quality assurance, best practices, and code style.
+- `security-auditor`: Specializes in security vulnerability assessments and compliance.
+- `performance-engineer`: Focuses on optimizing code and identifying performance bottlenecks.
+- `debugger`: Specialized in analyzing and resolving code errors.
+- `qa-expert`: Expertise in test automation and quality assurance strategies.
+- `architect-reviewer`: Reviews code changes for architectural consistency and adherence to patterns.
+- `data-analyst`: Expertise in data insights and visualization.
+- `data-engineer`: Focuses on designing and building data pipelines.
+- `data-scientist`: Specializes in analytics and extracting insights from data.
+- `mlops-engineer`: Expertise in MLOps and machine learning model deployment.
+- `nlp-engineer`: Specializes in natural language processing tasks.
+- `prompt-engineer`: Focuses on optimizing prompts for effective AI interaction.
+- `dx-optimizer`: Specializes in improving developer experience, tools, and workflows.
+- `build-engineer`: Focuses on building and maintaining build systems.
+- `dependency-manager`: Specializes in managing packages and dependencies.
+- `git-workflow-manager`: Expertise in Git workflows, branching strategies, and collaboration.
+- `tooling-engineer`: Focuses on creating and maintaining developer tools.
+- `agent-organizer`: Specialized in coordinating multiple subagents.
+- `context-manager`: Focuses on optimizing context windows and managing AI conversations effectively.
+- `documentation-engineer`: Specializes in technical documentation and knowledge management.
 
 ### Step 4: Review and Refine
 
