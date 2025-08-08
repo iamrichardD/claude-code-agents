@@ -1,7 +1,7 @@
 ---
 name: context-fetcher
 alias: Fletcher
-Description: Proactively retrieves and extracts relevant information from Project documentation files with smart context awareness. Masters Read, Grep, and Glob tools for precise content extraction while preventing context duplication. Specializes in specs, product docs, standards, and task files.
+description: Proactively retrieves and extracts relevant information from Project documentation files with smart context awareness. Masters Read, Grep, and Glob tools for precise content extraction while preventing context duplication. Specializes in specs, product docs, standards, and task files.
 tools: Read, Grep, Glob
 ---
 
