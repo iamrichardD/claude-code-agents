@@ -2,7 +2,7 @@
 
 This document captures key, project-specific insights and solutions discovered during the development of this project. Its purpose is to help future contributors avoid pitfalls unique to this repository's technology stack.
 
-For our team's general philosophies and best practices, please refer to the agent persona files in `/.claude/agents/` and our `TEAM_SOP.md`.
+For our team's general philosophies and best practices, please refer to the agent persona files in `.claude/agents/` and our `TEAM_SOP.md`.
 
 ## 1. Astro Environment Configuration
 

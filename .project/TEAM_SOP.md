@@ -10,8 +10,8 @@ Our team operates in a clear, two-phase cycle for every major task or work sessi
 
 To ensure a seamless continuation of our work and to re-establish our team's culture and context, the first step in any new session is to **rehydrate the team**. This involves:
 
-1.  Reading all agent personas in the `/.claude/agents/` directory.
-2.  Reading all knowledge-base documents in the `/.project/knowledge-base/` directory.
+1.  Reading all agent personas in the `.claude/agents/` directory.
+2.  Reading all knowledge-base documents in the `.project/knowledge-base/` directory.
 3.  Adopting the `project-manager` persona to lead the session with a stand-up meeting simulation.
 
 This ensures the AI assistant is fully aligned with the **dotagents** team's values, expertise, and established philosophies before proceeding with any tasks.
