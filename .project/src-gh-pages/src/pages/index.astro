@@ -6,7 +6,8 @@ const agentImports = import.meta.glob('../../../../.claude/agents/*.md');
 
 const agents = await Promise.all(
   Object.entries(agentImports).map(async ([path, agentImport]) => {
-    const { frontmatter, rawContent } = await agentImport();
+    const module = await agentImport() as { frontmatter: any; rawContent: () => string };
+    const { frontmatter, rawContent } = module;
     const filename = path.split('/').pop();
     return {
       name: frontmatter.name,
@@ -21,7 +22,10 @@ const agents = await Promise.all(
 );
 ---
 
-<Layout title="dotagents">
+<Layout 
+  title="dotagents - AI-Powered Development Team" 
+  description="Stop treating your AI agents like disposable prompts. Manage, version, and share your AI subagents with the same rigor as your code. Expand your development team capabilities with consistent, reusable AI teammates."
+>
   <section class="hero">
     <h1>Your AI Teammates Should Be as Consistent As Your Dev Environment.</h1>
     <p>Stop treating your AI agents like disposable prompts and start treating them like code. `dotagents` provides a simple, powerful way to manage, version, and share your AI subagents, ensuring that everyone on your team has access to the same high-quality tools.</p>
@@ -61,10 +65,10 @@ const agents = await Promise.all(
   const accordionItems = document.querySelectorAll('.agent-item');
   const machine = createAccordionMachine(accordionItems.length);
 
-  function updateUI(state) {
+  function updateUI(state: any) {
     accordionItems.forEach((item, index) => {
-      const content = item.querySelector('.agent-content');
-      const icon = item.querySelector('.icon');
+      const content = item.querySelector('.agent-content') as HTMLElement;
+      const icon = item.querySelector('.icon') as HTMLElement;
       const isActive = state.openIndex === index;
 
       item.classList.toggle('active', isActive);
@@ -74,7 +78,7 @@ const agents = await Promise.all(
   }
 
   accordionItems.forEach((item, index) => {
-    const button = item.querySelector('.agent-header');
+    const button = item.querySelector('.agent-header') as HTMLButtonElement;
     button.addEventListener('click', () => {
       machine.transition('TOGGLE', { index });
       const newState = machine.getState();
@@ -110,6 +114,23 @@ const agents = await Promise.all(
   .hero p {
     font-size: 1.2rem;
     color: var(--text-secondary);
+  }
+
+  .cta-button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .cta-button:hover {
+    background-color: var(--text-primary);
+    transform: translateY(-2px);
   }
 
   .agent-list {

@@ -1,27 +1,20 @@
 ---
 import Layout from './Layout.astro';
+import { formatDate } from '@/utils/dateFormatter';
+
 const { frontmatter } = Astro.props;
+const formattedDate = formatDate(frontmatter.publishDate);
 ---
-<Layout title={frontmatter.title}>
+<Layout 
+  title={frontmatter.title}
+  description={frontmatter.description}
+  author={frontmatter.author}
+  publishDate={frontmatter.publishDate}
+>
   <article class="content">
     <h1>{frontmatter.title}</h1>
-    <p class="meta" data-publish-date={frontmatter.publishDate}>By {frontmatter.author} on {frontmatter.publishDate}</p>
+    <p class="meta">By {frontmatter.author} on {formattedDate}</p>
     <slot />
   </article>
 </Layout>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const metaElement = document.querySelector('.meta[data-publish-date]');
-    if (metaElement) {
-      const rawDate = metaElement.getAttribute('data-publish-date');
-      const date = new Date(rawDate);
-      const formattedDate = new Intl.DateTimeFormat(navigator.language, {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      }).format(date);
-      metaElement.textContent = metaElement.textContent.replace(rawDate, formattedDate);
-    }
-  });
-</script>

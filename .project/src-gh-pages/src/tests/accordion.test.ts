@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { createAccordionMachine, AccordionMachine } from '../logic/accordion';
+import { createAccordionMachine, type AccordionMachine } from '../logic/accordion';
 
 describe('Accordion State Machine', () => {
   let machine: AccordionMachine;
