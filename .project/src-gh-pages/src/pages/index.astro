@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { createAccordionMachine } from '../logic/accordion';
 
 const agentImports = import.meta.glob('../../../../.claude/agents/*.md');
 
@@ -73,7 +72,7 @@ const agents = await Promise.all(
 
       item.classList.toggle('active', isActive);
       icon.textContent = isActive ? '-' : '+';
-      content.style.maxHeight = isActive ? content.scrollHeight + "px" : null;
+      content.style.maxHeight = isActive ? content.scrollHeight + "px" : "";
     });
   }
 

@@ -1,10 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import { formatDate } from '@/utils/dateFormatter';
 
 const allArticles = await getCollection('articles');
-const articles = allArticles.filter((article) => !article.data.draft);
+const articles = allArticles.filter((article: CollectionEntry<'articles'>) => !article.data.draft);
 ---
 
 <Layout 
@@ -14,7 +14,7 @@ const articles = allArticles.filter((article) => !article.data.draft);
   <div class="content">
     <h1>Articles</h1>
     <ul>
-      {articles.map((article) => (
+      {articles.map((article: CollectionEntry<'articles'>) => (
         <li>
           <a href={`${import.meta.env.BASE_URL}articles/${article.slug}/`}>
             <h3>{article.data.title}</h3>

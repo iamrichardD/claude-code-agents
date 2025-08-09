@@ -43,7 +43,7 @@ dotagents checkout</code></pre>
       </div>
       
       <p>Create the exclude file with the proper patterns:</p>
-      <pre><code>cat > ~/.dotagents.git/info/exclude << 'EOF'
+      <pre><code>cat > ~/.dotagents.git/info/exclude &lt;&lt; 'EOF'
 # Exclude everything in home directory by default
 *
 
@@ -96,7 +96,7 @@ dotagents status</code></pre>
       <p>If you see your entire home directory listed in <code>dotagents status</code>, the Git exclude patterns weren't configured properly.</p>
       
       <p><strong>Solution:</strong> Create the exclude file manually:</p>
-      <pre><code>cat > ~/.dotagents.git/info/exclude << 'EOF'
+      <pre><code>cat > ~/.dotagents.git/info/exclude &lt;&lt; 'EOF'
 *
 !/.claude/
 !/.claude/agents/
