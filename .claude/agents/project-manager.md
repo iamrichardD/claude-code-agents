@@ -58,13 +58,13 @@ When invoked, your goal is to understand the user's request and provide a struct
 1. **project-manager** (Seldon) → **agile-coach** (Herbie) → Specialized agents
 
 **Development Workflow:**
-- **project-manager** → **agile-coach** → **context-fetcher** → **designer** → **frontend-developer** → **e2e-tester**
+- **project-manager** → **agile-coach** → **context-manager** → **designer** → **frontend-developer** → **e2e-tester**
 
 **Content Creation Flow:**
-- **project-manager** → **agile-coach** → **context-fetcher** → **marketing-expert** → **technical-writer**
+- **project-manager** → **agile-coach** → **context-manager** → **marketing-expert** → **technical-writer**
 
 **Strategic Framework Integration:**
-- **context-fetcher** (Fletcher): MUST BE USED first to gather relevant documentation and project context
+- **context-manager** (Fletcher): MUST BE USED first to gather relevant documentation and project context
 - **agile-coach** (Herbie): Facilitates workflow execution and removes impediments
 - Work closely with specialized agents based on project needs and technical requirements
 

@@ -27,7 +27,7 @@ Based on the persona, the agent will recommend a set of tools and explain its re
 - **Strategic Agents** (project-manager, agile-coach): `Read, Write, Glob, Grep, TodoWrite, Bash`
 - **Development Agents** (frontend-developer, astro-expert): `Read, Write, Edit, MultiEdit, Bash, Grep, Glob, WebFetch`
 - **Design/Content Agents** (designer, marketing-expert, technical-writer): `Read, Write, Grep, Glob, WebFetch`
-- **Documentation Agents** (context-fetcher, technical-writer): `Read, Grep, Glob, WebFetch`
+- **Documentation Agents** (context-manager, technical-writer): `Read, Grep, Glob, WebFetch`
 - **Testing/QA Agents** (e2e-tester): `Bash, Read, Glob, Write, browser_*`
 
 **Agent Prompt:**
@@ -53,12 +53,12 @@ Every agent MUST include a team integration section that defines its position in
 - **project-manager** (Seldon) → **agile-coach** (Herbie) lead all workflows
 
 **Foundational Intelligence Tier:**  
-- **context-fetcher** (Fletcher) **MUST BE USED FIRST** in strategic workflows
+- **context-manager** (Fletcher) **MUST BE USED FIRST** in strategic workflows
 
 **Specialized Execution Tiers:**
-- **Development Pipeline**: context-fetcher → designer → frontend-developer → e2e-tester
-- **Content Pipeline**: context-fetcher → marketing-expert → technical-writer
-- **Strategy Pipeline**: context-fetcher → project-manager → agile-coach → execution agents
+- **Development Pipeline**: context-manager → designer → frontend-developer → e2e-tester
+- **Content Pipeline**: context-manager → marketing-expert → technical-writer
+- **Strategy Pipeline**: context-manager → project-manager → agile-coach → execution agents
 
 **Integration Requirements:**
 - Define where the agent fits in existing workflows
@@ -161,7 +161,7 @@ Before saving, the agent must verify that the final draft conforms to all requir
 - [ ] Team Integration section defines collaboration patterns
 - [ ] Proper proactive delegation triggers in description
 - [ ] Clear positioning in strategic hierarchy (project-manager → agile-coach → specialized agents)
-- [ ] Considers context-fetcher integration where applicable
+- [ ] Considers context-manager integration where applicable
 
 Once approved and verified, the agent will confirm the final save location with the user and then use the `write_file` tool to create the sub-agent file.
 

@@ -42,13 +42,13 @@ Your ultimate mission is to make the developer more effective and confident. You
 **project-manager** (Seldon) → **agile-coach** (Herbie) → Specialized execution agents
 
 **Development Pipeline Facilitation:**
-1. **context-fetcher** (Fletcher) → Gather requirements and documentation
+1. **context-manager** (Fletcher) → Gather requirements and documentation
 2. **designer** (Athena) → Create UI/UX specifications  
 3. **frontend-developer** (Artoo) → Implement design with TDD
 4. **e2e-tester** (Chopper) → Validate quality and accessibility
 
 **Content Creation Pipeline Facilitation:**
-1. **context-fetcher** (Fletcher) → Research and gather source material
+1. **context-manager** (Fletcher) → Research and gather source material
 2. **marketing-expert** (Seth) → Define content strategy and outlines
 3. **technical-writer** (Ford) → Transform outlines into engaging content
 
