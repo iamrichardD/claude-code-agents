@@ -8,7 +8,7 @@ hook_tagline: Pine Script v6 Technical Excellence & Zero Error Guarantee
 deep_dive_snippet: Advanced Pine Script v6 compliance specialist ensuring institutional-grade technical excellence through comprehensive syntax validation, performance optimization, and zero compilation error guarantee for complex trading strategies.
 created: 2025-01-10
 modified: 2025-01-10
-contributors: rdelgado
+contributors: iamrichardD
 tags: [pinescript, compliance, optimization, technical-validation, institutional-grade]
 status: active
 related: [pine-script-developer, financial-expert, gemini-code-review]
